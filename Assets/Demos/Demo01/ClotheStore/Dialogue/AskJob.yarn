@@ -1,0 +1,40 @@
+﻿title: AskJobStart
+---
+<<declare $firstTime = true>>
+<<if $firstTime == true>>    
+    <<set $firstTime to false>>
+    <<jump FirstAsk>>
+<<else>>
+    <<jump SorryAdvancedQuestions>>
+<<endif>>
+
+===
+
+title: FirstAsk
+---
+MuseumOwner: Welcome to the Museum.
+MuseumOwner: How can I help you?
+Fred: I'm Fred Donnitoly, and I'm here for the job
+MuseumOwner: Do you really want to work here?
+Fred: yeah I'm very enthusiastic.
+MuseumOwner: ok, do you like the history?
+Fred: Uhm sure.
+Fred: I don't LIKE the history. I LOVE the history.
+MuseumOwner: that sounds good.
+MuseumOwner: Mr. Donnitoly. Do you know in what year stated the first world war?
+Fred: ehh
+-> 1985
+-> 1200
+-> I know it, it just that I dont want to say it.
+MuseumOwner: what I though, you know nothing about history. 
+MuseumOwner: Sorry Mr Donnitoly I can't give you the job.
+<<jump SorryAdvancedQuestions>>
+===
+
+title: SorryAdvancedQuestions
+---
+Fred: Can we try the questions again?
+MuseumOwner: My questions are too advanced for you. And excuse me I'm very busy right now.
+Fred: Ok, bye
+MuseumOwner: bye.
+===

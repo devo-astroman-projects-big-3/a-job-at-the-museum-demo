@@ -1,6 +1,0 @@
-﻿title: ClotheStoreStart
----
-<<declare $firstTime = true>>
-Welcome to my clothe store
-<<set $firstTime to false>>
-===

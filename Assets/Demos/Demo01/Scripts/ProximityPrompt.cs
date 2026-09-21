@@ -18,6 +18,8 @@ public class ProximityPrompt : MonoBehaviour
     private void OnEnable()
     {
         _interactionArea.InteractionMade += HandleInteractionMade;
+        _interactionArea.EntersArea += HandleEntersArea;
+        _interactionArea.ExitsArea += HandleExitsArea;
     }
 
     private void OnDisable()
@@ -30,6 +32,10 @@ public class ProximityPrompt : MonoBehaviour
         }
 
         RestoreAfterCooldown();
+
+        _interactionArea.InteractionMade -= HandleInteractionMade;
+        _interactionArea.EntersArea -= HandleEntersArea;
+        _interactionArea.ExitsArea -= HandleExitsArea;
     }
 
     public void SetEInteractLabel(string text)
@@ -64,6 +70,16 @@ public class ProximityPrompt : MonoBehaviour
         _cooldownCoroutine = StartCoroutine(Cooldown());
 
         Interacted?.Invoke(interactedObject);
+    }
+
+    private void HandleEntersArea(GameObject interactedObject)
+    {
+        _EInteractLabel.enabled = true;
+    }
+
+    private void HandleExitsArea(GameObject interactedObject)
+    {
+        _EInteractLabel.enabled = false;
     }
 
     private IEnumerator Cooldown()
