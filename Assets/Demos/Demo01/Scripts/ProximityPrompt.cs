@@ -37,6 +37,10 @@ public class ProximityPrompt : MonoBehaviour
         _interactionArea.EntersArea -= HandleEntersArea;
         _interactionArea.ExitsArea -= HandleExitsArea;
     }
+    private void Start()
+    {
+        _EInteractLabel.enabled = false;
+    }
 
     public void SetEInteractLabel(string text)
     {
