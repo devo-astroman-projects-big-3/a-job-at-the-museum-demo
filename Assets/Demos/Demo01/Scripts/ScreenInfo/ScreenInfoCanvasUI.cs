@@ -13,6 +13,9 @@ public class ScreenInfoCanvasUI : MonoBehaviour
     [SerializeField] private TMP_Text _descriptionTitleLabel;
     [SerializeField] private TMP_Text _descriptionLabel;
 
+    [SerializeField] private Button _leftPageButton;
+    [SerializeField] private Button _rightPageButton;
+
     public UnityEvent OnClose;
 
     private ScreenInfoPresentationData _presentation;
@@ -28,6 +31,7 @@ public class ScreenInfoCanvasUI : MonoBehaviour
         _mainTitleLabel.text = _presentation.MainTitle;
         _subTitleLabel.text = _presentation.SubTitle;
         ShowPage(pages[_currentPageIndex]);
+        SetPageButtonStates(false, _currentPageIndex < pages.Length - 1);
     }
 
     public void NextPage()
@@ -45,6 +49,7 @@ public class ScreenInfoCanvasUI : MonoBehaviour
 
         _currentPageIndex = nextPageIndex;
         ShowPage(pages[_currentPageIndex]);
+        SetPageButtonStates(_currentPageIndex > 0, _currentPageIndex < pages.Length - 1);
     }
     public void PrevPage()
     {
@@ -62,6 +67,7 @@ public class ScreenInfoCanvasUI : MonoBehaviour
 
         _currentPageIndex = previousPageIndex;
         ShowPage(pages[_currentPageIndex]);
+        SetPageButtonStates(_currentPageIndex > 0, _currentPageIndex < pages.Length - 1);
     }
 
     private void ShowPage(ScreenInfoPageData page)
@@ -75,5 +81,12 @@ public class ScreenInfoCanvasUI : MonoBehaviour
     public void Close()
     {
         OnClose?.Invoke();
+    }
+
+    public void SetPageButtonStates(bool leftInteractable, bool rightInteractable)
+    {
+        _leftPageButton.interactable = leftInteractable;
+
+        _rightPageButton.interactable = rightInteractable;
     }
 }

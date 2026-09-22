@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ScreenInfoDatabase
   _items:
   - {fileID: 11400000, guid: 910e941d8a2b619448aa4a08ad6fb4d0, type: 2}
+  - {fileID: 11400000, guid: abd204c655912934b81900b1ddebca6f, type: 2}
