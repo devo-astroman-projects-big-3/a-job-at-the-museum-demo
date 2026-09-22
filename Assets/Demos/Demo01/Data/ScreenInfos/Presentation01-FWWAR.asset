@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 864e6c49c07cc1242a97776a2034b24d, type: 3}
+  m_Name: Presentation01-FWWAR
+  m_EditorClassIdentifier: Assembly-CSharp::ScreenInfoData
+  _id: 01-FWWAR
+  _topTitle: TopTitle
+  _mainTitle: Main title
+  _subTitle: Sub title
+  _screenInfoPageData:
+  - {fileID: 11400000, guid: d467a838e4506f74fb8bcc8efdb8a840, type: 2}
+  - {fileID: 11400000, guid: 43426f0871e520c4a96ce5459f1a8dc0, type: 2}
+  - {fileID: 11400000, guid: 470d8cbf8e3eae94f9cd2e84fd4e66a8, type: 2}

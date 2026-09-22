@@ -43,6 +43,11 @@ public class GlobalServices : MonoBehaviour
         _moverPlayerService.DeactivateNavmeshAgent();
     }
 
+    public void PlayScreenInfo(int id)
+    {
+        Debug.Log("playing " + id);
+    }    
+
 
     private void OnDisable()
     {
