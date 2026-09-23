@@ -3,13 +3,11 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class PairButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
-    IInitializePotentialDragHandler, IDragHandler
+public class PairButton : MonoBehaviour
 {    
     [SerializeField] private TMP_Text _textLabel;
-    [SerializeField] private Image _imageDisplay;
+    [SerializeField] private Image _imageDisplay;    
     
-    private ConnectPairsCanvasUI _owner;
     private string _pairId;
     private string _text;
     private Sprite _image;
@@ -43,30 +41,5 @@ public class PairButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
         }
     }
 
-    public void Bind(ConnectPairsCanvasUI owner) => _owner = owner;
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        if (_owner == null)
-            _owner = GetComponentInParent<ConnectPairsCanvasUI>();
-        if (_owner != null)
-            _owner.BeginPointerConnection(this, eventData);
-    }
-
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        if (_owner != null)
-            _owner.EndPointerConnection(eventData);
-    }
-
-    public void OnInitializePotentialDrag(PointerEventData eventData)
-    {
-        eventData.useDragThreshold = false;
-    }
-
-    public void OnDrag(PointerEventData eventData)
-    {
-        // Keep the drag target on this button until PointerUp.
-    }
 
 }
