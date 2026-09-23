@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +16,7 @@ public class ConnectPairsCanvasUI : MonoBehaviour
 
     public void SetValues(PairData[] pairs)
     {
+        ResetSelection();
         if (pairs == null || _leftGroup == null || _rightGroup == null ||
             pairs.Length > _leftGroup.Length || pairs.Length > _rightGroup.Length)
         {
@@ -87,89 +87,105 @@ public class ConnectPairsCanvasUI : MonoBehaviour
     }
 
 
-    //click left to right
     public void OnLeftPointerDown(PairButton pButton)
     {
-        Debug.Log("OnLeftPointerDown " + pButton.PairId);
+        ResetSelection();
+        if (!IsInGroup(pButton, _leftGroup))
+            return;
+
         _leftSelection = pButton;
         _leftDragging = true;
-        
+    }
+
+    public void OnRightPointerDown(PairButton pButton)
+    {
+        ResetSelection();
+        if (!IsInGroup(pButton, _rightGroup))
+            return;
+
+        _rightSelection = pButton;
+        _rightDragging = true;
     }
 
     public void OnLeftPointerUp(PairButton pButton)
     {
-        Debug.Log("OnLeftPointerUp " + pButton.PairId);
-        _leftSelection = pButton;
-        _leftDragging = false;
-        //CheckPairSelection();
-    }
-
-
-
-    public void OnRightPointerDown(PairButton pButton)
-    {
-        Debug.Log("OnRightPointerDown " + pButton.PairId);
-         _rightSelection = pButton;
-         _leftDragging = true;
+        FinishSelection();
     }
 
     public void OnRightPointerUp(PairButton pButton)
     {
-        Debug.Log("OnRightPointerUp " + pButton.PairId);
-        _rightSelection = pButton;
-        _leftDragging = false;
-        CheckPairSelection();
+        FinishSelection();
     }
-    //click right to left
-
-
-
-
-    
 
     public void OnLeftPointerEnter(PairButton pButton)
     {
-        Debug.Log("OnLeftPointerEnter");
-        
+        if (_rightDragging && IsInGroup(pButton, _leftGroup))
+            _leftSelection = pButton;
     }
-
 
     public void OnLeftPointerExit(PairButton pButton)
     {
-        Debug.Log("OnLeftPointerExit");
+        if (_rightDragging && _leftSelection == pButton)
+            _leftSelection = null;
     }
-
-
-
 
     public void OnRightPointerEnter(PairButton pButton)
     {
-        Debug.Log("OnRightPointerEnter");
+        if (_leftDragging && IsInGroup(pButton, _rightGroup))
+            _rightSelection = pButton;
     }
 
     public void OnRightPointerExit(PairButton pButton)
     {
-        Debug.Log("OnRightPointerExit");
+        if (_leftDragging && _rightSelection == pButton)
+            _rightSelection = null;
     }
 
-    // Retained for PairButton's existing pointer-event forwarding.
-    public void BeginPointerConnection(PairButton button, PointerEventData eventData)
+    private static bool IsInGroup(PairButton button, PairButton[] group)
     {
+        return button != null && button.isActiveAndEnabled && group != null &&
+            System.Array.IndexOf(group, button) >= 0;
     }
 
-    public void EndPointerConnection(PointerEventData eventData)
+    private void FinishSelection()
     {
+        // PointerUp normally arrives on the starting button, so use the hovered target.
+        if ((_leftDragging || _rightDragging) &&
+            IsInGroup(_leftSelection, _leftGroup) &&
+            IsInGroup(_rightSelection, _rightGroup))
+        {
+            CheckPairSelection();
+        }
+
+        ResetSelection();
     }
 
     private void CheckPairSelection()
     {
-        if(_leftSelection.PairId == _rightSelection.PairId)
+        if (_leftSelection == null || _rightSelection == null)
+            return;
+
+        if (!string.IsNullOrEmpty(_leftSelection.PairId) &&
+            _leftSelection.PairId == _rightSelection.PairId)
         {
-            Debug.Log("correct!");
+            Debug.Log("correct!", this);
         }
         else
         {
-            Debug.Log("incorrect!");
+            Debug.Log("incorrect!", this);
         }
+    }
+
+    private void ResetSelection()
+    {
+        _leftSelection = null;
+        _rightSelection = null;
+        _leftDragging = false;
+        _rightDragging = false;
+    }
+
+    private void OnDisable()
+    {
+        ResetSelection();
     }
 }
