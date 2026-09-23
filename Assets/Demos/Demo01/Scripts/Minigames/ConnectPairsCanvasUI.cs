@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class ConnectPairsCanvasUI : MonoBehaviour
 {
     
+    [SerializeField] private UIButtonLine _uIButtonLine;
+    
     [SerializeField] private PairButton[] _leftGroup;
     [SerializeField] private PairButton[] _rightGroup;
 
@@ -17,6 +19,8 @@ public class ConnectPairsCanvasUI : MonoBehaviour
     public void SetValues(PairData[] pairs)
     {
         ResetSelection();
+        if (_uIButtonLine != null)
+            _uIButtonLine.ClearLine();
         if (pairs == null || _leftGroup == null || _rightGroup == null ||
             pairs.Length > _leftGroup.Length || pairs.Length > _rightGroup.Length)
         {
@@ -95,6 +99,7 @@ public class ConnectPairsCanvasUI : MonoBehaviour
 
         _leftSelection = pButton;
         _leftDragging = true;
+        StartSelectionLine();
     }
 
     public void OnRightPointerDown(PairButton pButton)
@@ -105,6 +110,7 @@ public class ConnectPairsCanvasUI : MonoBehaviour
 
         _rightSelection = pButton;
         _rightDragging = true;
+        StartSelectionLine();
     }
 
     public void OnLeftPointerUp(PairButton pButton)
@@ -149,12 +155,19 @@ public class ConnectPairsCanvasUI : MonoBehaviour
 
     private void FinishSelection()
     {
+        if (!_leftDragging && !_rightDragging)
+            return;
+
         // PointerUp normally arrives on the starting button, so use the hovered target.
         if ((_leftDragging || _rightDragging) &&
             IsInGroup(_leftSelection, _leftGroup) &&
             IsInGroup(_rightSelection, _rightGroup))
         {
             CheckPairSelection();
+        }
+        else if (_uIButtonLine != null)
+        {
+            _uIButtonLine.ClearLine();
         }
 
         ResetSelection();
@@ -169,11 +182,26 @@ public class ConnectPairsCanvasUI : MonoBehaviour
             _leftSelection.PairId == _rightSelection.PairId)
         {
             Debug.Log("correct!", this);
+            if (_uIButtonLine != null)
+                _uIButtonLine.OnMousePointUp();
         }
         else
         {
             Debug.Log("incorrect!", this);
+            if (_uIButtonLine != null)
+                _uIButtonLine.ClearLine();
         }
+    }
+
+    private void StartSelectionLine()
+    {
+        if (_uIButtonLine == null)
+        {
+            Debug.LogWarning("Assign UIButtonLine in the Inspector to draw pair connections.", this);
+            return;
+        }
+
+        _uIButtonLine.OnMousePointDown();
     }
 
     private void ResetSelection()
@@ -186,6 +214,8 @@ public class ConnectPairsCanvasUI : MonoBehaviour
 
     private void OnDisable()
     {
+        if ((_leftDragging || _rightDragging) && _uIButtonLine != null)
+            _uIButtonLine.ClearLine();
         ResetSelection();
     }
 }
