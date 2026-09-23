@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 #if ENABLE_INPUT_SYSTEM
@@ -18,6 +19,7 @@ public class UIButtonLine : MonoBehaviour
     private bool hasDrawnLine;
     private Vector2 startPoint;
     private Vector2 endPoint;
+    private readonly List<GameObject> keptLines = new();
 
     private void Awake()
     {
@@ -87,6 +89,7 @@ public class UIButtonLine : MonoBehaviour
 
     private void OnDestroy()
     {
+        ClearAllLines();
         if (lineRect != null)
             Destroy(lineRect.gameObject);
     }
@@ -112,6 +115,35 @@ public class UIButtonLine : MonoBehaviour
             endPoint = mousePoint;
         isDrawing = false;
         DrawLine(startPoint, endPoint);
+    }
+
+    public void KeepLine()
+    {
+        if (!hasDrawnLine || lineImage == null)
+            return;
+
+        OnMousePointUp();
+        if (lineImage.enabled)
+        {
+            GameObject savedLine = Instantiate(lineRect.gameObject, container, false);
+            savedLine.name = "Kept Connection Line";
+            keptLines.Add(savedLine);
+        }
+
+        ClearLine();
+    }
+
+    public void ClearAllLines()
+    {
+        ClearLine();
+        foreach (GameObject savedLine in keptLines)
+        {
+            if (savedLine == null)
+                continue;
+            savedLine.SetActive(false);
+            Destroy(savedLine);
+        }
+        keptLines.Clear();
     }
 
     public void ClearLine()

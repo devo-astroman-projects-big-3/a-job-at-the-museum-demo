@@ -20,7 +20,7 @@ public class ConnectPairsCanvasUI : MonoBehaviour
     {
         ResetSelection();
         if (_uIButtonLine != null)
-            _uIButtonLine.ClearLine();
+            _uIButtonLine.ClearAllLines();
         if (pairs == null || _leftGroup == null || _rightGroup == null ||
             pairs.Length > _leftGroup.Length || pairs.Length > _rightGroup.Length)
         {
@@ -183,7 +183,7 @@ public class ConnectPairsCanvasUI : MonoBehaviour
         {
             Debug.Log("correct!", this);
             if (_uIButtonLine != null)
-                _uIButtonLine.OnMousePointUp();
+                _uIButtonLine.KeepLine();
         }
         else
         {
