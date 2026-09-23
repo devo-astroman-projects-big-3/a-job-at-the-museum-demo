@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class ConnectPairsCanvasUI : MonoBehaviour
 {
@@ -9,6 +10,14 @@ public class ConnectPairsCanvasUI : MonoBehaviour
     
     [SerializeField] private PairButton[] _leftGroup;
     [SerializeField] private PairButton[] _rightGroup;
+
+    [SerializeField] private GameObject _congrats;
+    public UnityEvent OnComplete = new UnityEvent();
+
+    private readonly HashSet<PairButton> _matchedButtons = new();
+    private int _totalPairs;
+    private int _correctPairs;
+    private bool _completed;
 
     private PairButton _leftSelection;
     private PairButton _rightSelection;
@@ -19,6 +28,12 @@ public class ConnectPairsCanvasUI : MonoBehaviour
     public void SetValues(PairData[] pairs)
     {
         ResetSelection();
+        _matchedButtons.Clear();
+        _totalPairs = 0;
+        _correctPairs = 0;
+        _completed = false;
+        if (_congrats != null)
+            _congrats.SetActive(false);
         if (_uIDrawLine != null)
             _uIDrawLine.ClearAllLines();
         if (pairs == null || _leftGroup == null || _rightGroup == null ||
@@ -43,6 +58,7 @@ public class ConnectPairsCanvasUI : MonoBehaviour
             if (_rightGroup[index] != null)
                 _rightGroup[index].gameObject.SetActive(index < pairs.Length);
 
+        _totalPairs = pairs.Length;
         int i = 0;
         foreach(PairData pair in pairs)
         {
@@ -147,10 +163,10 @@ public class ConnectPairsCanvasUI : MonoBehaviour
             _rightSelection = null;
     }
 
-    private static bool IsInGroup(PairButton button, PairButton[] group)
+    private bool IsInGroup(PairButton button, PairButton[] group)
     {
         return button != null && button.isActiveAndEnabled && group != null &&
-            System.Array.IndexOf(group, button) >= 0;
+            System.Array.IndexOf(group, button) >= 0 && !_matchedButtons.Contains(button);
     }
 
     private void FinishSelection()
@@ -178,12 +194,19 @@ public class ConnectPairsCanvasUI : MonoBehaviour
         if (_leftSelection == null || _rightSelection == null)
             return;
 
+        if (_matchedButtons.Contains(_leftSelection) || _matchedButtons.Contains(_rightSelection))
+            return;
+
         if (!string.IsNullOrEmpty(_leftSelection.PairId) &&
             _leftSelection.PairId == _rightSelection.PairId)
         {
             Debug.Log("correct!", this);
             if (_uIDrawLine != null)
                 _uIDrawLine.KeepLine();
+            _matchedButtons.Add(_leftSelection);
+            _matchedButtons.Add(_rightSelection);
+            _correctPairs++;
+            CheckAllCorrects();
         }
         else
         {
@@ -191,6 +214,17 @@ public class ConnectPairsCanvasUI : MonoBehaviour
             if (_uIDrawLine != null)
                 _uIDrawLine.ClearLine();
         }
+    }
+
+    private void CheckAllCorrects()
+    {
+        if (_completed || _totalPairs == 0 || _correctPairs != _totalPairs)
+            return;
+
+        _completed = true;
+        if (_congrats != null)
+            _congrats.SetActive(true);
+        OnComplete?.Invoke();
     }
 
     private void StartSelectionLine()
