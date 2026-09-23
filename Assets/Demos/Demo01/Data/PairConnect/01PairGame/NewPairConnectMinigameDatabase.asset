@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 817681e01a8c8ca4d901ea8bf8986de3, type: 3}
+  m_Name: NewPairConnectMinigameDatabase
+  m_EditorClassIdentifier: Assembly-CSharp::PairConnectMinigameDatabase
+  _items:
+  - {fileID: 11400000, guid: f10993b1895180c4daa2e388fd2c6585, type: 2}
+  - {fileID: 11400000, guid: 30346f6670e0d6547b396fdb5dae0828, type: 2}
+  - {fileID: 11400000, guid: 7a3b1071f9663414b8255a9e281d6fc2, type: 2}
