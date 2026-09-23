@@ -11,6 +11,11 @@ public class UIButtonLine : MonoBehaviour
     [SerializeField] private Color lineColor = Color.white;
     [SerializeField, Min(1f)] private float thickness = 5f;
 
+    [SerializeField] private Button testButtonA;
+    [SerializeField] private Button testButtonB;
+    [SerializeField] private bool showTestLine = true;
+    
+
     private RectTransform container;
     private RectTransform lineRect;
     private Image lineImage;
@@ -48,6 +53,12 @@ public class UIButtonLine : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (showTestLine && testButtonA != null && testButtonB != null)
+        {
+            DrawTestLine();
+            return;
+        }
+
         if (hasDrawnLine)
         {
             if (isDrawing && TryGetMousePoint(out Vector2 mousePoint))
@@ -57,6 +68,18 @@ public class UIButtonLine : MonoBehaviour
         }
 
         lineImage.enabled = false;
+    }
+
+    public void DrawTestLine()
+    {
+        if (container == null || lineImage == null || testButtonA == null || testButtonB == null)
+            return;
+
+        RectTransform rectA = testButtonA.GetComponent<RectTransform>();
+        RectTransform rectB = testButtonB.GetComponent<RectTransform>();
+        Vector2 start = container.InverseTransformPoint(rectA.TransformPoint(rectA.rect.center));
+        Vector2 end = container.InverseTransformPoint(rectB.TransformPoint(rectB.rect.center));
+        DrawLine(start, end);
     }
 
     private void DrawLine(Vector2 start, Vector2 end)

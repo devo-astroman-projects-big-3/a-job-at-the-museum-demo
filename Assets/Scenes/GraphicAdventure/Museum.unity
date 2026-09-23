@@ -1962,7 +1962,6 @@ RectTransform:
   - {fileID: 1635182941}
   - {fileID: 1677251130}
   - {fileID: 6753937}
-  - {fileID: 1835482951}
   m_Father: {fileID: 2003414750}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4301,6 +4300,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1977782794}
+  - {fileID: 1835482951}
   - {fileID: 332818599}
   - {fileID: 928044510}
   m_Father: {fileID: 307251602}
@@ -9147,14 +9147,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1835482950}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1583006340}
   - {fileID: 799535949}
-  m_Father: {fileID: 307251602}
+  m_Father: {fileID: 845382692}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -9175,6 +9175,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonLine
   lineColor: {r: 0, g: 0, b: 0, a: 1}
   thickness: 5
+  testButtonA: {fileID: 0}
+  testButtonB: {fileID: 0}
+  showTestLine: 0
 --- !u!114 &1835482953
 MonoBehaviour:
   m_ObjectHideFlags: 0
