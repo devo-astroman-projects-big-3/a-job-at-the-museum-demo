@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 #endif
 
 [RequireComponent(typeof(RectTransform))]
-public class UIButtonLine : MonoBehaviour
+public class UIDrawLine : MonoBehaviour
 {
     [SerializeField] private Color lineColor = Color.white;
     [SerializeField, Min(1f)] private float thickness = 5f;

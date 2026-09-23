@@ -6959,7 +6959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eec4d64b796acd49b2268a4e8cb3a21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConnectPairsCanvasUI
-  _uIButtonLine: {fileID: 1835482952}
+  _uIDrawLine: {fileID: 1835482952}
   _leftGroup:
   - {fileID: 1127255774}
   - {fileID: 212736618}
@@ -9175,8 +9175,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIButtonLine
   lineColor: {r: 0, g: 0, b: 0, a: 1}
   thickness: 5
-  testButtonA: {fileID: 0}
-  testButtonB: {fileID: 0}
+  testButtonA: {fileID: 1583006341}
+  testButtonB: {fileID: 799535951}
   showTestLine: 0
 --- !u!114 &1835482953
 MonoBehaviour:
