@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,6 +11,9 @@ public class CategorizeCanvasUI : MonoBehaviour
     [SerializeField] private DraggableItems _draggableItems;
 
     [SerializeField] private GameObject _completeMsgGO;
+
+    [SerializeField] private TMP_Text _categoryNameLeft;
+    [SerializeField] private TMP_Text _categoryNameRight;
     
 
     public UnityEvent OnComplete = new UnityEvent();
@@ -20,12 +24,24 @@ public class CategorizeCanvasUI : MonoBehaviour
     private int _rightCount;
     private bool _completed;
 
+
+
+    public void SetCategoryNames(string nameLeft,string nameRight)
+    {
+        Debug.Log("categoryOne.CategoryName " + nameLeft);
+        Debug.Log("categoryTwo.CategoryName " + nameRight);
+
+        _categoryNameLeft.text = nameLeft;
+        _categoryNameRight.text = nameRight;   
+    }
+
     public void SetValues(CategoryData categoryOne,CategoryData categoryTwo)
     {
-
         SetValues(categoryOne != null ? categoryOne.Images : null,
             categoryTwo != null ? categoryTwo.Images : null);
     }
+
+
 
     public void RandomizePositions()
     {
