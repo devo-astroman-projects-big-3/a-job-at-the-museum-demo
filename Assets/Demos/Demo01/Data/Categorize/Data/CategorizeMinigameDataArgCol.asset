@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CategorizeMinigameData
   _id: ArgCol
   _categoryOne: {fileID: 11400000, guid: 2d8c66489445b6b4ab248a83701bd2be, type: 2}
+  _categoryOneSelectedIndexes: 00000000010000000200000003000000
   _categoryTwo: {fileID: 11400000, guid: 113b136caabd86342a7a76f83d79172b, type: 2}
+  _categoryTwoSelectedIndexes: 00000000010000000200000003000000
