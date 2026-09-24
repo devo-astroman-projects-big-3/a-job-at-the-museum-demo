@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dab0edf1366a3a4fb068c1ad5b6f294, type: 3}
+  m_Name: Colombia
+  m_EditorClassIdentifier: Assembly-CSharp::CategoryData
+  _id: 02Colombia
+  _categoryName: Colombia
+  _images:
+  - {fileID: 21300000, guid: e7dfa2e4f68df2247844153eaa4b561f, type: 3}
+  - {fileID: 21300000, guid: b0a6ca321b6b55e4cb0e9cb96834b883, type: 3}
+  - {fileID: 21300000, guid: 9c04efc392ff7a74d863ed01ee0cf54e, type: 3}
+  - {fileID: 21300000, guid: 10a5d7959b116f14797a2f84bd267c1d, type: 3}
+  - {fileID: 21300000, guid: 1de67139b09957d438b0bbeca832a7ca, type: 3}
+  - {fileID: 21300000, guid: 70936ee7b2abe2045ba4d843296f5017, type: 3}
+  - {fileID: 21300000, guid: 5cfd5fa513d1d434480eca81c3ada8d7, type: 3}
+  - {fileID: 21300000, guid: a5dfcb11e22b1e84583df51bac9b52e8, type: 3}
+  - {fileID: 21300000, guid: 1f5fcb69a90bb024199a765289c2e8b4, type: 3}
+  - {fileID: 21300000, guid: 41c67261bfbcc23488237268fdc07311, type: 3}

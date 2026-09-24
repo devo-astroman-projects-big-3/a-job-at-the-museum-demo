@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdd69b5de5bba6343ab22f5c000e0cae, type: 3}
+  m_Name: CategorizeMinigameDatabase
+  m_EditorClassIdentifier: Assembly-CSharp::CategorizeMinigameDatabase
+  _items:
+  - {fileID: 11400000, guid: 0a21210541a457d42a75b88fd7388a20, type: 2}
+  - {fileID: 11400000, guid: c2280121680d6ca41a6ebb7e4cd50d4b, type: 2}
+  - {fileID: 11400000, guid: 07bbc73e8c1a1454bbf01c2d2b7eb406, type: 2}

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dab0edf1366a3a4fb068c1ad5b6f294, type: 3}
+  m_Name: Brasil
+  m_EditorClassIdentifier: Assembly-CSharp::CategoryData
+  _id: 03Brasil
+  _categoryName: Brasil
+  _images:
+  - {fileID: 21300000, guid: 84aa36af74561e745bf66a0c0e35e377, type: 3}
+  - {fileID: 21300000, guid: e67e0f140ff0cb546b2f744e95e67357, type: 3}
+  - {fileID: 21300000, guid: c6033ce3c88753642824914518fd78ae, type: 3}
+  - {fileID: 21300000, guid: 208acdb83dc470c40b087d686e912367, type: 3}
+  - {fileID: 21300000, guid: 2f5fff74ee149664eaa022e0742dba76, type: 3}
+  - {fileID: 21300000, guid: da088018ac9ec614bac4023c071f8461, type: 3}
+  - {fileID: 21300000, guid: 85a2cfab5cdec95458272956bed8548b, type: 3}
+  - {fileID: 21300000, guid: 14990ca576f3a404abc877ec5a4fb74c, type: 3}
+  - {fileID: 21300000, guid: 35ada885fcedd2849a733136e4480303, type: 3}
+  - {fileID: 21300000, guid: 61763ae3c492b894e884b2c0e4bc658e, type: 3}
