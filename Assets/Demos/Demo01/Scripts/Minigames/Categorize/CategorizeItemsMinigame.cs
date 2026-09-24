@@ -30,6 +30,7 @@ public class CategorizeItemsMinigame : MonoBehaviour
          return;
 
       _categorizeCanvasGO.SetActive(true);
+      _categorizeCanvasUI.HideCongratsMsg();
       _categorizeCanvasUI.SetValues(leftImages, rightImages);
    }
 

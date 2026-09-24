@@ -9,6 +9,9 @@ public class CategorizeCanvasUI : MonoBehaviour
     [SerializeField] private SlotGroups _slotGroupRight;
     [SerializeField] private DraggableItems _draggableItems;
 
+    [SerializeField] private GameObject _completeMsgGO;
+    
+
     public UnityEvent OnComplete = new UnityEvent();
 
     private readonly HashSet<int> _placedLeft = new();
@@ -19,8 +22,14 @@ public class CategorizeCanvasUI : MonoBehaviour
 
     public void SetValues(CategoryData categoryOne,CategoryData categoryTwo)
     {
+
         SetValues(categoryOne != null ? categoryOne.Images : null,
             categoryTwo != null ? categoryTwo.Images : null);
+    }
+
+    public void HideCongratsMsg()
+    {
+        _completeMsgGO.SetActive(false);   
     }
 
     public void SetValues(Sprite[] leftImages, Sprite[] rightImages)
@@ -81,6 +90,8 @@ public class CategorizeCanvasUI : MonoBehaviour
         if (_completed || _leftCount + _rightCount == 0 ||
             _placedLeft.Count != _leftCount || _placedRight.Count != _rightCount)
             return;
+
+        Debug.Log("COMPLETED !!!");
 
         _completed = true;
         OnComplete?.Invoke();

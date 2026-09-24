@@ -8,16 +8,15 @@ public class SlotGroups : MonoBehaviour
 {
 
 
-   [SerializeField] private Image[] _slotImages;
-   
-   /* public void ShowImage1() */
-   /* reset ... */
+   [SerializeField] private Image[] _slotImages;   
 
-   /* UnityEvent Invoke when 4 images are shown */
+   public UnityEvent<int> CorrectDropItem;   
 
    public void CorrectDrop(int index)
    {
+      Debug.Log("_-CorrectDrop-_" + index);
       _slotImages[index].gameObject.SetActive(true);
+      CorrectDropItem?.Invoke(index);
    }
 
    public void SetImages(Sprite[] spriteImgs)
