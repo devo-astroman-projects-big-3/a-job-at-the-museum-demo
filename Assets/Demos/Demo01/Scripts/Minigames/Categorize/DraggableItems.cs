@@ -6,15 +6,51 @@ using UnityEngine.EventSystems;
 
 public class DraggableItems : MonoBehaviour
 {
-  
-   /* add dragUI */
-   /* add dragableImage */
-   /* add validDropSlot */
-   /* add UnityEvent notify correct */
-   /* Hide image of those dragged correctly */
+   
    [SerializeField] private Image[] _leftSlotDraggableItemImages;
    [SerializeField] private Image[] _rightSlotDraggableItemImages;
+   [SerializeField] private Image[] _allSlotDraggableItemImages;
 
+
+   public void RandomizePositions()
+   {
+      if (_allSlotDraggableItemImages == null)
+         return;
+
+      var items = new List<Transform>();
+      Transform parent = null;
+      foreach (Image image in _allSlotDraggableItemImages)
+      {
+         if (image == null || items.Contains(image.transform))
+            continue;
+
+         Transform item = image.transform;
+         if (item.parent == null || (parent != null && item.parent != parent))
+         {
+            Debug.LogWarning("All draggable images must be children of the same layout object to randomize their order.", this);
+            return;
+         }
+
+         parent = item.parent;
+         items.Add(item);
+      }
+
+      // Fisher-Yates shuffle of sibling positions; keep the category arrays unchanged.
+      for (int i = items.Count - 1; i > 0; i--)
+      {
+         int j = Random.Range(0, i + 1);
+         if (i == j)
+            continue;
+
+         int firstIndex = items[i].GetSiblingIndex();
+         int secondIndex = items[j].GetSiblingIndex();
+         items[i].SetSiblingIndex(secondIndex);
+         items[j].SetSiblingIndex(firstIndex);
+      }
+
+      if (parent is RectTransform layoutRect)
+         LayoutRebuilder.MarkLayoutForRebuild(layoutRect);
+   }
 
    public void SetLeftItemImages(Sprite[] spriteImgs)
    {

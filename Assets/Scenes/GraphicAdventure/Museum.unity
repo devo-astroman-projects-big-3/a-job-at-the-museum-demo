@@ -7020,6 +7020,15 @@ MonoBehaviour:
   - {fileID: 824896717}
   - {fileID: 1068574126}
   - {fileID: 1178751257}
+  _allSlotDraggableItemImages:
+  - {fileID: 1737960971}
+  - {fileID: 278034921}
+  - {fileID: 1983418209}
+  - {fileID: 1074941622}
+  - {fileID: 336359373}
+  - {fileID: 824896717}
+  - {fileID: 1068574126}
+  - {fileID: 1178751257}
 --- !u!1 &909514273
 GameObject:
   m_ObjectHideFlags: 0

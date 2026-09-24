@@ -27,6 +27,11 @@ public class CategorizeCanvasUI : MonoBehaviour
             categoryTwo != null ? categoryTwo.Images : null);
     }
 
+    public void RandomizePositions()
+    {
+        _draggableItems.RandomizePositions();
+    }
+
     public void HideCongratsMsg()
     {
         _completeMsgGO.SetActive(false);   
