@@ -9,9 +9,9 @@ public class ImageSlicer : MonoBehaviour
     private readonly List<Sprite> _generatedSprites = new();
     private readonly List<Image> _generatedImages = new();
 
-    private void Start()
+    public List<Image> GetGeneratedImages()
     {
-        SliceImage(2,2);
+        return _generatedImages;
     }
     public void SliceImage(int rows, int columns)
     {

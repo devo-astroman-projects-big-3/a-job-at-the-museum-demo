@@ -20,7 +20,41 @@ public class UIDragAndDrop : MonoBehaviour
     private int _pointerId;
     private int _originalSiblingIndex;
 
+    public void SetImageToDrag(Image imageToDrag)
+    {
+        Configure(imageToDrag, _slot);
+    }
+    public void SetSlot(Image slot)
+    {
+        Configure(_imageToDrag, slot);
+    }
+
+    public void Configure(Image imageToDrag, Image slot)
+    {
+        OnDisable();
+        RemoveDragEvents();
+        _imageToDrag = imageToDrag;
+        _slot = slot;
+        _imageRect = null;
+        _dragParent = null;
+        if (_imageToDrag != null && _slot != null)
+            Initialize();
+    }
+
     private void Awake()
+    {
+        // Runtime-added components are configured after AddComponent invokes Awake.
+        if (_imageToDrag != null && _slot != null)
+            Initialize();
+    }
+
+    private void Start()
+    {
+        if (_imageRect == null)
+            Initialize();
+    }
+
+    private void Initialize()
     {
         if (_imageToDrag == null || _slot == null)
         {
@@ -46,6 +80,7 @@ public class UIDragAndDrop : MonoBehaviour
         AddDragEvent(EventTriggerType.BeginDrag, OnBeginDrag);
         AddDragEvent(EventTriggerType.Drag, OnDrag);
         AddDragEvent(EventTriggerType.EndDrag, OnEndDrag);
+        enabled = true;
     }
 
     private void AddDragEvent(EventTriggerType type, UnityAction<PointerEventData> callback)
@@ -130,10 +165,18 @@ public class UIDragAndDrop : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (_eventTrigger == null)
-            return;
-        foreach (EventTrigger.Entry entry in _dragEvents)
-            _eventTrigger.triggers.Remove(entry);
+        RemoveDragEvents();
+    }
+
+    private void RemoveDragEvents()
+    {
+        if (_eventTrigger != null)
+        {
+            foreach (EventTrigger.Entry entry in _dragEvents)
+                _eventTrigger.triggers.Remove(entry);
+        }
+        _dragEvents.Clear();
+        _eventTrigger = null;
     }
     
     

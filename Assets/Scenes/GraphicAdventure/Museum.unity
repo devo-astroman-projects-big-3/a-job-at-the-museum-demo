@@ -4595,6 +4595,7 @@ GameObject:
   - component: {fileID: 504809937}
   - component: {fileID: 504809939}
   - component: {fileID: 504809938}
+  - component: {fileID: 504809940}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -4659,6 +4660,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 504809936}
   m_CullTransparentMesh: 1
+--- !u!114 &504809940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504809936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 339d9de21ff6cfa4e8ab7d3ffdc96874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ImageSlicer
+  _imageToSlice: {fileID: 504809938}
+  _pieces: []
 --- !u!1 &508837533
 GameObject:
   m_ObjectHideFlags: 0
@@ -6483,6 +6498,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 658584948}
+  - component: {fileID: 658584949}
+  - component: {fileID: 658584950}
   m_Layer: 0
   m_Name: Minigame screen - Puzzle
   m_TagString: Untagged
@@ -6510,6 +6527,38 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &658584949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658584946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e46fedb4582b834bb4240b35bd2353c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Puzzle
+  _imageSlicerDragItems: {fileID: 1660470877}
+  _imageSlicerSlots: {fileID: 504809940}
+  _pieceDragger: {fileID: 658584950}
+  PuzzleCompletedUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &658584950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658584946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cc074bd0373940449e26685f87d0791, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PieceDragger
+  _draggablePieces: []
+  _slotPieces: []
 --- !u!1 &670314875
 GameObject:
   m_ObjectHideFlags: 0
@@ -14158,8 +14207,8 @@ RectTransform:
   m_Children:
   - {fileID: 214014719}
   - {fileID: 1836342810}
-  - {fileID: 290202010}
   - {fileID: 1804398323}
+  - {fileID: 290202010}
   - {fileID: 648952528}
   m_Father: {fileID: 724422492}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15816,7 +15865,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1660470873}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -17028,7 +17077,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1804398322}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
