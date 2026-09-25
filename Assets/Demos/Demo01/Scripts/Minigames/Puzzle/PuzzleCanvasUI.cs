@@ -18,38 +18,47 @@ public class PuzzleCanvasUI : MonoBehaviour
     private int _correctCount;
     private int _totalPieces;
 
-    private void Start()
-    {
-        
-        //Setup();
-    }
 
-    public void Setup(Sprite imageToSlice)
+    public void Setup(Sprite imageToSlice, int nSlices)
     {
-        _imageItemsDraggable.sprite = imageToSlice;
-        _imageSlot.sprite = imageToSlice;
-
-        _congratsMsg.SetActive(false);
         RemovePieceListeners();
         _remainingPieces.Clear();
         _correctCount = 0;
         _totalPieces = 0;
 
         if (_imageSlicerDragItems == null || _imageSlicerSlots == null ||
-            _pieceDragger == null || _imageSlicerDragItems == _imageSlicerSlots)
+            _pieceDragger == null || _imageItemsDraggable == null || _imageSlot == null ||
+            _imageSlicerDragItems == _imageSlicerSlots)
         {
-            Debug.LogWarning("Puzzle: assign separate drag and slot slicers and a PieceDragger.", this);
+            Debug.LogWarning("Puzzle: assign source Images, separate drag and slot slicers, and a PieceDragger.", this);
             return;
         }
 
-        _imageSlicerDragItems.SliceImage(2, 2);
-        _imageSlicerSlots.SliceImage(2, 2);
-        List<Image> generatedDragImages = _imageSlicerDragItems.GetGeneratedImages();
-        List<Image> generatedSlotImages = _imageSlicerSlots.GetGeneratedImages();
-
-        if (generatedDragImages.Count != 4 || generatedSlotImages.Count != 4)
+        if (imageToSlice == null || imageToSlice.packed || nSlices <= 0 ||
+            (long)nSlices * nSlices > int.MaxValue ||
+            nSlices > imageToSlice.rect.width || nSlices > imageToSlice.rect.height)
         {
-            Debug.LogWarning("Puzzle: both slicers must generate four pieces.", this);
+            Debug.LogWarning("Puzzle: supply an unpacked sprite and a positive grid size with at least one pixel per piece.", this);
+            return;
+        }
+
+        int expectedPieces = nSlices * nSlices;
+        _imageItemsDraggable.sprite = imageToSlice;
+        _imageSlot.sprite = imageToSlice;
+        if (_congratsMsg != null)
+            _congratsMsg.SetActive(false);
+
+        _imageSlicerDragItems.SliceImage(nSlices, nSlices);
+        _imageSlicerSlots.SliceImage(nSlices, nSlices);
+        // Smaller grids leave previously generated surplus images inactive.
+        List<Image> generatedDragImages = _imageSlicerDragItems.GetGeneratedImages()
+            .FindAll(image => image != null && image.gameObject.activeSelf);
+        List<Image> generatedSlotImages = _imageSlicerSlots.GetGeneratedImages()
+            .FindAll(image => image != null && image.gameObject.activeSelf);
+
+        if (generatedDragImages.Count != expectedPieces || generatedSlotImages.Count != expectedPieces)
+        {
+            Debug.LogWarning($"Puzzle: both slicers must generate {expectedPieces} active pieces for a {nSlices} x {nSlices} grid.", this);
             return;
         }
 
@@ -70,6 +79,31 @@ public class PuzzleCanvasUI : MonoBehaviour
             drag.CorrectDrop.AddListener(OnCorrectDrop);
         }
         _totalPieces = _remainingPieces.Count;
+        RandomizeDraggableItemsPositions();
+    }
+
+    private void RandomizeDraggableItemsPositions()
+    {
+        if (_imageSlicerDragItems == null)
+            return;
+
+        var pieces = new List<RectTransform>();
+        foreach (Image image in _imageSlicerDragItems.GetGeneratedImages())
+        {
+            if (image != null && _remainingPieces.Contains(image.gameObject) &&
+                !pieces.Contains(image.rectTransform))
+                pieces.Add(image.rectTransform);
+        }
+
+        // Resolve UI layout before swapping the pieces' world positions.
+        Canvas.ForceUpdateCanvases();
+        for (int i = pieces.Count - 1; i > 0; i--)
+        {
+            int j = Random.Range(0, i + 1);
+            Vector3 position = pieces[i].position;
+            pieces[i].position = pieces[j].position;
+            pieces[j].position = position;
+        }
     }
 
     private void OnCorrectDrop(GameObject piece, GameObject slot)

@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleMinigameData
   _id: Image03
   _imageToSlice: {fileID: 21300000, guid: cfea822642a7ec848b594265a68293ef, type: 3}
+  _nSlices: 3
