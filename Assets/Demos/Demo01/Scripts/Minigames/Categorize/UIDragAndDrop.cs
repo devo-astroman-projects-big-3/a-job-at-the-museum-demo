@@ -10,6 +10,7 @@ public class UIDragAndDrop : MonoBehaviour
     [SerializeField] private Image _imageToDrag;
     [SerializeField] private Image _slot;
     public UnityEvent<GameObject> CorrectDropUnityEvent = new UnityEvent<GameObject>();
+    public UnityEvent<GameObject,GameObject> CorrectDrop = new UnityEvent<GameObject,GameObject>();
     private RectTransform _imageRect;
     private RectTransform _dragParent;
     private EventTrigger _eventTrigger;
@@ -145,6 +146,7 @@ public class UIDragAndDrop : MonoBehaviour
             _imageRect.position += slotCenter - imageCenter;
 
             CorrectDropUnityEvent?.Invoke(_imageToDrag.gameObject);
+            CorrectDrop?.Invoke(_imageToDrag.gameObject, _slot.gameObject);
 
         }
         else

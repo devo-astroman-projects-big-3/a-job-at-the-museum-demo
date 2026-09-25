@@ -12,7 +12,25 @@ public class PieceDragger : MonoBehaviour
     {
         _draggablePieces = draggablePieces;
         _slotPieces = slotPieces;
+        SetOpacitySlotImages(.5f);
         SetPiecesToDrag();
+    }
+
+    public void SetOpacitySlotImages(float opacity)
+    {
+        if (_slotPieces == null)
+            return;
+
+        float alpha = Mathf.Clamp01(opacity);
+        foreach (Image slot in _slotPieces)
+        {
+            if (slot == null)
+                continue;
+
+            Color color = slot.color;
+            color.a = alpha;
+            slot.color = color;
+        }
     }
 
     public void SetPiecesToDrag()

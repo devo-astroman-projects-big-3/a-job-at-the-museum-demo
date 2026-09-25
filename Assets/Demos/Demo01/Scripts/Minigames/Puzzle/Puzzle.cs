@@ -58,19 +58,22 @@ public class Puzzle : MonoBehaviour
 
             _registeredPieces.Add(drag);
             _remainingPieces.Add(piece.gameObject);
-            drag.CorrectDropUnityEvent.AddListener(OnCorrectDrop);
+            drag.CorrectDrop.AddListener(OnCorrectDrop);
         }
         _totalPieces = _remainingPieces.Count;
     }
 
-    private void OnCorrectDrop(GameObject piece)
+    private void OnCorrectDrop(GameObject piece, GameObject slot)
     {
-        //OnCorrectDrop should make the slot visi
-
-        if (piece == null || !_remainingPieces.Remove(piece))
+        if (piece == null || slot == null || !slot.TryGetComponent<Image>(out Image slotImage) ||
+            !_remainingPieces.Remove(piece))
             return;
 
+        Color color = slotImage.color;
+        color.a = 1f;
+        slotImage.color = color;
         piece.SetActive(false);
+
         _correctCount++;
         if (_correctCount == _totalPieces)
             PuzzleCompletedUnityEvent?.Invoke();
@@ -81,7 +84,7 @@ public class Puzzle : MonoBehaviour
         foreach (UIDragAndDrop drag in _registeredPieces)
         {
             if (drag != null)
-                drag.CorrectDropUnityEvent.RemoveListener(OnCorrectDrop);
+                drag.CorrectDrop.RemoveListener(OnCorrectDrop);
         }
         _registeredPieces.Clear();
     }
