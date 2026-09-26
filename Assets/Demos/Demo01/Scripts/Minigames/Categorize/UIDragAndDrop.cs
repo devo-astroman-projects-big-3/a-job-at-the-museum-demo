@@ -145,6 +145,7 @@ public class UIDragAndDrop : MonoBehaviour
             Vector3 imageCenter = _imageRect.TransformPoint(_imageRect.rect.center);
             _imageRect.position += slotCenter - imageCenter;
 
+            Debug.Log("CORRECT DROP");
             CorrectDropUnityEvent?.Invoke(_imageToDrag.gameObject);
             CorrectDrop?.Invoke(_imageToDrag.gameObject, _slot.gameObject);
 
