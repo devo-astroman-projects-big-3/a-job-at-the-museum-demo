@@ -9,12 +9,14 @@ public class UIDragAndDrop : MonoBehaviour
     
     [SerializeField] private Image _imageToDrag;
     [SerializeField] private Image _slot;
+    [SerializeField] private bool _allowPassMouseEvents;
     public UnityEvent<GameObject> CorrectDropUnityEvent = new UnityEvent<GameObject>();
     public UnityEvent<GameObject,GameObject> CorrectDrop = new UnityEvent<GameObject,GameObject>();
     private RectTransform _imageRect;
     private RectTransform _dragParent;
     private EventTrigger _eventTrigger;
     private readonly List<EventTrigger.Entry> _dragEvents = new();
+    private readonly List<Graphic> _disabledRaycastTargets = new();
     private Vector3 _originalPosition;
     private Vector2 _pointerOffset;
     private bool _isDragging;
@@ -108,6 +110,18 @@ public class UIDragAndDrop : MonoBehaviour
         _pointerId = eventData.pointerId;
         _isDragging = true;
         _imageRect.SetAsLastSibling();
+        if (_allowPassMouseEvents)
+        {
+            // Include child graphics so labels and decorations do not block hover events.
+            foreach (Graphic graphic in _imageToDrag.GetComponentsInChildren<Graphic>(true))
+            {
+                if (!graphic.raycastTarget)
+                    continue;
+
+                _disabledRaycastTargets.Add(graphic);
+                graphic.raycastTarget = false;
+            }
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -137,6 +151,7 @@ public class UIDragAndDrop : MonoBehaviour
                 _slot.rectTransform, eventData.position, slotCamera);
 
         _isDragging = false;
+        RestoreRaycastTargets();
         _imageRect.SetSiblingIndex(_originalSiblingIndex);
         if (correctDrop)
         {
@@ -158,6 +173,7 @@ public class UIDragAndDrop : MonoBehaviour
 
     private void OnDisable()
     {
+        RestoreRaycastTargets();
         if (!_isDragging || _imageRect == null)
             return;
 
@@ -168,7 +184,18 @@ public class UIDragAndDrop : MonoBehaviour
 
     private void OnDestroy()
     {
+        RestoreRaycastTargets();
         RemoveDragEvents();
+    }
+
+    private void RestoreRaycastTargets()
+    {
+        foreach (Graphic graphic in _disabledRaycastTargets)
+        {
+            if (graphic != null)
+                graphic.raycastTarget = true;
+        }
+        _disabledRaycastTargets.Clear();
     }
 
     private void RemoveDragEvents()
