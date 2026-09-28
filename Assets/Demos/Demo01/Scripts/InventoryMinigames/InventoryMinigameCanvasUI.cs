@@ -4,6 +4,8 @@ using UnityEngine;
 public class InventoryMinigameCanvasUI : MonoBehaviour
 {
 
+    [SerializeField] private string _id;
+    public string Id => _id;
     [SerializeField] private ElementInventoryItemCombination[] _combinations;
 
     private void ProcessCombination(string inventoryItemId, string elementMinigameId)
