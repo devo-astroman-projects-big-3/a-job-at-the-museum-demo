@@ -8,11 +8,12 @@ public class UIDragAndDropV2 : MonoBehaviour
 {
     
     [SerializeField] private Image _imageToDrag;
-    [SerializeField] private Image _slot;
-    [SerializeField] private Image[] _wrongSlots;
+    [SerializeField] private Image[] _slots;
     [SerializeField] private bool _allowPassMouseEvents;
+
     public UnityEvent<GameObject,GameObject> CorrectDrop = new UnityEvent<GameObject,GameObject>();
-    public UnityEvent<GameObject,GameObject> WrongDrop = new UnityEvent<GameObject,GameObject>(); //when dropped on some of the _wrongSlots
+    // Reports the dragged item and the matched slot.
+
     private RectTransform _imageRect;
     private RectTransform _dragParent;
     private EventTrigger _eventTrigger;
@@ -26,19 +27,24 @@ public class UIDragAndDropV2 : MonoBehaviour
 
     public void SetImageToDrag(Image imageToDrag)
     {
-        Configure(imageToDrag, _slot);
+        Configure(imageToDrag, _slots);
     }
     public void SetSlot(Image slot)
     {
         Configure(_imageToDrag, slot);
     }
 
-    public void Configure(Image imageToDrag, Image slot)
+    public void SetSlots(Image[] slots)
+    {
+        Configure(_imageToDrag, slots);
+    }
+
+    public void Configure(Image imageToDrag, params Image[] slots)
     {
         OnDisable();
         RemoveDragEvents();
         _imageToDrag = imageToDrag;
-        _slot = slot;
+        _slots = slots;
         _imageRect = null;
         _dragParent = null;
         if (_imageToDrag != null)
@@ -143,55 +149,50 @@ public class UIDragAndDropV2 : MonoBehaviour
         if (!_isDragging || eventData.pointerId != _pointerId)
             return;
 
-        bool correctDrop = ContainsDropPosition(_slot, eventData.position);
-        Image wrongSlot = null;
-        // Prefer the correct slot and notify only once if wrong slots overlap.
-        if (!correctDrop && _wrongSlots != null)
-        {
-            foreach (Image candidate in _wrongSlots)
-            {
-                if (ContainsDropPosition(candidate, eventData.position))
-                {
-                    wrongSlot = candidate;
-                    break;
-                }
-            }
-        }
+        Image droppedSlot = FindDropSlot(eventData.position);
 
         _isDragging = false;
         RestoreRaycastTargets();
         _imageRect.SetSiblingIndex(_originalSiblingIndex);
-        if (correctDrop)
+        if (droppedSlot != null)
         {
             // Align the visual centers, including images with non-centered pivots.
-            Vector3 slotCenter = _slot.rectTransform.TransformPoint(_slot.rectTransform.rect.center);
+            Vector3 slotCenter = droppedSlot.rectTransform.TransformPoint(droppedSlot.rectTransform.rect.center);
             Vector3 imageCenter = _imageRect.TransformPoint(_imageRect.rect.center);
             _imageRect.position += slotCenter - imageCenter;
 
-            Debug.Log("CORRECT DROP");
-            CorrectDrop?.Invoke(_imageToDrag.gameObject, _slot.gameObject);
+            Debug.Log("DROP IN ONE OF THE SLOTS");
+            CorrectDrop?.Invoke(_imageToDrag.gameObject, droppedSlot.gameObject);
 
         }
         else
         {         
             _imageRect.localPosition = _originalPosition;
-            if (wrongSlot != null)
-                WrongDrop?.Invoke(_imageToDrag.gameObject, wrongSlot.gameObject);
         }
     }
 
-    private static bool ContainsDropPosition(Image slot, Vector2 position)
+    private Image FindDropSlot(Vector2 position)
     {
-        if (slot == null || !slot.isActiveAndEnabled)
-            return false;
+        if (_slots == null)
+            return null;
 
-        Canvas slotCanvas = slot.canvas;
-        Camera slotCamera = slotCanvas != null &&
-            slotCanvas.rootCanvas.renderMode != RenderMode.ScreenSpaceOverlay
-            ? slotCanvas.rootCanvas.worldCamera : null;
+        // If slots overlap, use the first active match in the configured array.
+        foreach (Image slot in _slots)
+        {
+            if (slot == null || !slot.isActiveAndEnabled)
+                continue;
 
-        return RectTransformUtility.RectangleContainsScreenPoint(
-            slot.rectTransform, position, slotCamera);
+            Canvas slotCanvas = slot.canvas;
+            Camera slotCamera = slotCanvas != null &&
+                slotCanvas.rootCanvas.renderMode != RenderMode.ScreenSpaceOverlay
+                ? slotCanvas.rootCanvas.worldCamera : null;
+
+            if (RectTransformUtility.RectangleContainsScreenPoint(
+                slot.rectTransform, position, slotCamera))
+                return slot;
+        }
+
+        return null;
     }
 
     private void OnDisable()
