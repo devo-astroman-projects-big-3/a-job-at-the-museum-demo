@@ -21,6 +21,8 @@ public class InventoryMinigameCanvasUI : MonoBehaviour
                     combination.ElementMinigame.Id == elementMinigameId)
                 {
                     combination.NotifyCombinationMade();
+                    combination.NotifyInventoryItemCombinated();
+                    
                     return;
                 }
             }

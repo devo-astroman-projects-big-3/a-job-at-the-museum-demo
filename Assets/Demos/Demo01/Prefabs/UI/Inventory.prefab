@@ -34,10 +34,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 9183802694538290656}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 508.6125, y: -197.47885}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2827141809740552910
 CanvasRenderer:
@@ -109,7 +109,19 @@ MonoBehaviour:
   _allowPassMouseEvents: 1
   CorrectDrop:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4006852028685478652}
+        m_TargetAssemblyTypeName: InventoryCanvasUI, Assembly-CSharp
+        m_MethodName: NotifyCorrectDrop
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &488078581702915742
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,10 +156,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 9183802694538290656}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 232.4125, y: -78.26886}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1394693358036558539
 CanvasRenderer:
@@ -216,10 +228,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIDragAndDropV2
   _imageToDrag: {fileID: 3750104918620459948}
   _slots: []
-  _allowPassMouseEvents: 0
+  _allowPassMouseEvents: 1
   CorrectDrop:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4006852028685478652}
+        m_TargetAssemblyTypeName: InventoryCanvasUI, Assembly-CSharp
+        m_MethodName: NotifyCorrectDrop
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &630979568786894909
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,10 +278,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 9183802694538290656}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 94.3125, y: -197.47885}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8909860127239322181
 CanvasRenderer:
@@ -329,7 +353,19 @@ MonoBehaviour:
   _allowPassMouseEvents: 1
   CorrectDrop:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4006852028685478652}
+        m_TargetAssemblyTypeName: InventoryCanvasUI, Assembly-CSharp
+        m_MethodName: NotifyCorrectDrop
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1249749179505934343
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,10 +521,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 9183802694538290656}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 370.5125, y: -197.47885}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8694236712574867641
 CanvasRenderer:
@@ -560,7 +596,19 @@ MonoBehaviour:
   _allowPassMouseEvents: 1
   CorrectDrop:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4006852028685478652}
+        m_TargetAssemblyTypeName: InventoryCanvasUI, Assembly-CSharp
+        m_MethodName: NotifyCorrectDrop
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2021241210851662839
 GameObject:
   m_ObjectHideFlags: 0
@@ -853,10 +901,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 9183802694538290656}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 508.6125, y: -78.26886}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1481839073943967774
 CanvasRenderer:
@@ -928,7 +976,19 @@ MonoBehaviour:
   _allowPassMouseEvents: 1
   CorrectDrop:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4006852028685478652}
+        m_TargetAssemblyTypeName: InventoryCanvasUI, Assembly-CSharp
+        m_MethodName: NotifyCorrectDrop
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3082820024514087018
 GameObject:
   m_ObjectHideFlags: 0
@@ -1032,6 +1092,24 @@ MonoBehaviour:
   - {fileID: 279335882898045305}
   _nextButton: {fileID: 8964386891192249125}
   _prevButton: {fileID: 8616045246464348936}
+  _elementsToDropOn:
+  - {fileID: 0}
+  - {fileID: 0}
+  CorrectDrop:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: InventoryMinigameCanvasUI, Assembly-CSharp
+        m_MethodName: ProcessDrop
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3590317221178236116
 GameObject:
   m_ObjectHideFlags: 0
@@ -1311,10 +1389,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 9183802694538290656}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 370.5125, y: -78.26886}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5061850171848967819
 CanvasRenderer:
@@ -1386,7 +1464,19 @@ MonoBehaviour:
   _allowPassMouseEvents: 1
   CorrectDrop:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4006852028685478652}
+        m_TargetAssemblyTypeName: InventoryCanvasUI, Assembly-CSharp
+        m_MethodName: NotifyCorrectDrop
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4417186033914955774
 GameObject:
   m_ObjectHideFlags: 0
@@ -1539,10 +1629,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 9183802694538290656}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 94.3125, y: -78.26886}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8692586262435312166
 CanvasRenderer:
@@ -1610,11 +1700,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIDragAndDropV2
   _imageToDrag: {fileID: 3265666606388732709}
-  _slots: []
+  _slots:
+  - {fileID: 0}
   _allowPassMouseEvents: 1
   CorrectDrop:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4006852028685478652}
+        m_TargetAssemblyTypeName: InventoryCanvasUI, Assembly-CSharp
+        m_MethodName: NotifyCorrectDrop
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6096092822290282957
 GameObject:
   m_ObjectHideFlags: 0
@@ -1786,10 +1889,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 9183802694538290656}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 232.4125, y: -197.47885}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7528455761159505610
 CanvasRenderer:
@@ -1861,7 +1964,19 @@ MonoBehaviour:
   _allowPassMouseEvents: 1
   CorrectDrop:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4006852028685478652}
+        m_TargetAssemblyTypeName: InventoryCanvasUI, Assembly-CSharp
+        m_MethodName: NotifyCorrectDrop
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6876942397929198971
 GameObject:
   m_ObjectHideFlags: 0
