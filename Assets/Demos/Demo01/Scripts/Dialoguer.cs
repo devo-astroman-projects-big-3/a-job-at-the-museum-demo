@@ -18,10 +18,10 @@ public class Dialoguer : MonoBehaviour
     
 
     public void PlayerAskToTalk()
-    {   
-        _globalServices.MoveAndLookPlayerTo(_playerPosition,_npcPosition);
+    {   HandlePlayerMovedAndLookingAtPlace();
+        //_globalServices.MoveAndLookPlayerTo(_playerPosition,_npcPosition);
 
-        _globalServices.PlayerMovedAndLookingAtPlace += HandlePlayerMovedAndLookingAtPlace;
+        //_globalServices.PlayerMovedAndLookingAtPlace += HandlePlayerMovedAndLookingAtPlace;
         
     }
 
@@ -30,7 +30,7 @@ public class Dialoguer : MonoBehaviour
         _proximityPrompt.gameObject.SetActive(true);
         _mouseCursorUtil.HideCursor();
 
-         _globalServices.DisableNavAgent();
+         //_globalServices.DisableNavAgent();
          _globalServices.EnablePlayerThirdPerson();
         
     }
@@ -42,6 +42,6 @@ public class Dialoguer : MonoBehaviour
         _dialogueRunnerHolder.GetComponent<DialogueRunner>().StartDialogue(_startNode);
         _mouseCursorUtil.ShowCursor();
 
-        _globalServices.PlayerMovedAndLookingAtPlace -= HandlePlayerMovedAndLookingAtPlace;
+        //_globalServices.PlayerMovedAndLookingAtPlace -= HandlePlayerMovedAndLookingAtPlace;
     }
 }
