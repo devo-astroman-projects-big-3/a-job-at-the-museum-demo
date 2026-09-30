@@ -4938,9 +4938,6 @@ GameObject:
   - component: {fileID: 251221956}
   - component: {fileID: 251221961}
   - component: {fileID: 251221960}
-  - component: {fileID: 251221959}
-  - component: {fileID: 251221958}
-  - component: {fileID: 251221957}
   m_Layer: 5
   m_Name: DrainTap
   m_TagString: Untagged
@@ -4967,61 +4964,6 @@ RectTransform:
   m_AnchoredPosition: {x: 343.7, y: -279.3}
   m_SizeDelta: {x: 876.3, y: 237.8}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &251221957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 251221955}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8daacc77312d3a3409f6a60f4c0105ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ElementMinigame
-  _id: ExpendableMachinePanel
---- !u!114 &251221958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 251221955}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 5, y: 5}
-  m_UseGraphicAlpha: 1
---- !u!114 &251221959
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 251221955}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2364c9dab160ae4bb8600971844a8b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UIClickeableElement
-  ClickUnityEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 451659078}
-        m_TargetAssemblyTypeName: FeedbackMsgUI, Assembly-CSharp
-        m_MethodName: ShowMsg
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: I can see something yellow inside
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &251221960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18473,9 +18415,6 @@ GameObject:
   - component: {fileID: 988781485}
   - component: {fileID: 988781490}
   - component: {fileID: 988781489}
-  - component: {fileID: 988781488}
-  - component: {fileID: 988781487}
-  - component: {fileID: 988781486}
   m_Layer: 5
   m_Name: OpenDrain
   m_TagString: Untagged
@@ -18502,61 +18441,6 @@ RectTransform:
   m_AnchoredPosition: {x: -276.2, y: -262.7}
   m_SizeDelta: {x: 876.3, y: 247}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &988781486
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 988781484}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8daacc77312d3a3409f6a60f4c0105ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ElementMinigame
-  _id: ExpendableMachinePanel
---- !u!114 &988781487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 988781484}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 5, y: 5}
-  m_UseGraphicAlpha: 1
---- !u!114 &988781488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 988781484}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2364c9dab160ae4bb8600971844a8b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UIClickeableElement
-  ClickUnityEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 451659078}
-        m_TargetAssemblyTypeName: FeedbackMsgUI, Assembly-CSharp
-        m_MethodName: ShowMsg
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: I can see something yellow inside
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &988781489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24622,7 +24506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryItemChangeNotifier
   _dialogueRunner: {fileID: 573158266}
-  _itemData: {fileID: 11400000, guid: 8100f66691dfb5c40bd761aacdf4f142, type: 2}
+  _itemData: {fileID: 11400000, guid: 2be89f0b35f16234b8b2714a16a25f2d, type: 2}
   _variableName: $hasCokeCan
   _newValueOnAdded: 1
   _newValueOnDropped: 0
@@ -30193,9 +30077,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 138852335}
     - target: {fileID: 4006852028685478652, guid: 7f6583e8e0db91c45bd54391a3c643f3, type: 3}
+      propertyPath: _elementsToDropOn.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4006852028685478652, guid: 7f6583e8e0db91c45bd54391a3c643f3, type: 3}
       propertyPath: '_elementsToDropOn.Array.data[0]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1461693968}
     - target: {fileID: 4006852028685478652, guid: 7f6583e8e0db91c45bd54391a3c643f3, type: 3}
       propertyPath: '_elementsToDropOn.Array.data[1]'
       value: 
@@ -32874,6 +32762,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: InventoryCanvasUI, Assembly-CSharp
         m_MethodName: AddItem
         m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: keys
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1809331015}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

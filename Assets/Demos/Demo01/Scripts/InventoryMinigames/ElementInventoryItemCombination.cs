@@ -16,11 +16,13 @@ public class ElementInventoryItemCombination : MonoBehaviour
 
     public void NotifyCombinationMade()
     {
+        Debug.Log("_CombinationMade_");
         CombinationMade?.Invoke(this);
     }
 
     public void NotifyInventoryItemCombinated()
     {
+        Debug.Log("NotifyInventoryItemCombinated");
         InventoryItemCombinated?.Invoke(_inventoryItem.Id);
     }
 

@@ -4,66 +4,67 @@ title: AskTechnician
 <<declare $isHappy = false>>
 <<declare $hasCokeCan = false>>
 <<declare $lookedDrain = false>>
-Fred: Hello
+Fred: Hello, may I ask you something...
 <<if $isHappy == true>>
-    <<jump Happy>>
-<<elseif $hasCokeCan == true>>
-    <<jump OfferCoke>>
+    <<jump QuestionsHappy>>
 <<else>>
-    <<jump Angry>>
+    <<jump QuestionsAngry>>
 <<endif>>
 ===
 
 title: Angry
 ---
--> Can you help me ...
-    <<jump AngryAnswer>>
-===
-
-title: AngryAnswer
----
 Technician: Allways people want me to help them!
-Technician: Not anymore! I'm busy right now
+Technician: Not anymore!
 ===
 
 
-title: OfferCoke
----
--> Can you help me ...
-    <<jump AngryAnswer>>
--> Can you help me open a drain? <<if $lookedDrain == true and $receivedCrowbar == false>>
--> You look thirsty, Do you want some coke?
-    Technician: Hey thanks.
-    <<set $hasCokeCan to false>>
-    <<set $isHappy to true>>
-===
 
-
-title: Happy
+title: QuestionsHappy
 ---
--> Can you help me ...
-    <<jump Questions>>
-===
-
-title: Questions
----
+Technician: Sure! what can I do for you?
 -> Nothing really.
-    <<jump Bye>>
+    <<jump ByeHappy>>
 -> Can you help me open a drain? <<if $lookedDrain == true and $receivedCrowbar == false>>
     <<jump Drain>>
 ===
+
+title: QuestionsAngry
+---
+-> Nothing really.
+    <<jump ByeAngry>>
+-> Can you help me open a drain? <<if $lookedDrain == true and $receivedCrowbar == false>>
+    <<jump Angry>>
+-> You look thirsty, do you want a cold coke? <<if $hasCokeCan == true>>
+    <<jump GiveCoke>>
+===
+
+
+title: ByeAngry
+---
+Technician: Bye.
+===
+
+title: ByeHappy
+---
+Technician: Bye, let me know if you need something
+===
+
 
 title: Drain
 ---
 Technician: I can give you this crowbar.
 Fred: Thanks, that can help
+Fred: Bye
 <<set $receivedCrowbar to true>>
-<<jump Bye>>
+<<jump ByeHappy>>
 ===
 
-
-title: Bye
+title: GiveCoke
 ---
-Technician: Ok.
-Fred: Bye.
+Technician: Hey thanks.
+<<set $hasCokeCan to false>>
+<<set $isHappy to true>>
+Fred: you are welcome.
+Technician: I'll continue with my work but if you need something let me know. Bye.
 ===

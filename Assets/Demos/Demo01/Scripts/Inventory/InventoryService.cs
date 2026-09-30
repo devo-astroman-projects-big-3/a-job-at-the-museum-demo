@@ -13,6 +13,14 @@ public class InventoryService : MonoBehaviour
     public UnityEvent<string> OnAddedItem;
     public UnityEvent<string> OnDroppedItem;
 
+
+    private void Start()
+    {
+        /* testing adding crowbar 
+
+        AddItem("crowbar");*/
+    }
+
     public void AddItem(string id)
     {
         if (_inventoryItemDatabase == null)
