@@ -3,7 +3,7 @@ using System;
 
 public class GlobalServices : MonoBehaviour
 {
-    [SerializeField] private MoverPlayerService _moverPlayerService;
+    //[SerializeField] private MoverPlayerService _moverPlayerService;
     [SerializeField] private CharacterControllerMovement _characterControllerMovement;
 
 
@@ -18,12 +18,12 @@ public class GlobalServices : MonoBehaviour
             return;
         }
         _lookAtPosition = lookTo.position;
-        _moverPlayerService.DestinationReached -= OnPlayerReachedDestination;
+        //_moverPlayerService.DestinationReached -= OnPlayerReachedDestination;
 
        DisablePlayerThirdPerson();
 
-        if (_moverPlayerService.GoToAndThenLookAt(position.position, lookTo.position))
-            _moverPlayerService.DestinationReached += OnPlayerReachedDestination;
+        //if (_moverPlayerService.GoToAndThenLookAt(position.position, lookTo.position))
+            //_moverPlayerService.DestinationReached += OnPlayerReachedDestination;
     }
 
     public void DisablePlayerThirdPerson()
@@ -40,7 +40,7 @@ public class GlobalServices : MonoBehaviour
 
     public void DisableNavAgent()
     {
-        _moverPlayerService.DeactivateNavmeshAgent();
+        //_moverPlayerService.DeactivateNavmeshAgent();
     }
 
     public void PlayScreenInfo(int id)
@@ -51,8 +51,8 @@ public class GlobalServices : MonoBehaviour
 
     private void OnDisable()
     {
-        if (_moverPlayerService != null)
-            _moverPlayerService.DestinationReached -= OnPlayerReachedDestination;
+        //if (_moverPlayerService != null)
+        //    _moverPlayerService.DestinationReached -= OnPlayerReachedDestination;
     }
 
     private void OnPlayerReachedDestination()
@@ -60,7 +60,7 @@ public class GlobalServices : MonoBehaviour
 
         //_moverPlayerService.PlayerLookAt(_lookAtPosition);
 
-        _moverPlayerService.DestinationReached -= OnPlayerReachedDestination;
+        //_moverPlayerService.DestinationReached -= OnPlayerReachedDestination;
         PlayerMovedAndLookingAtPlace?.Invoke();
     }
 }
