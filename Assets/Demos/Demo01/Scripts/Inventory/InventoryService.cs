@@ -16,9 +16,9 @@ public class InventoryService : MonoBehaviour
 
     private void Start()
     {
-        /* testing adding crowbar 
+        /* testing purposes */
 
-        AddItem("crowbar");*/
+        //AddItem("keys");
     }
 
     public void AddItem(string id)
