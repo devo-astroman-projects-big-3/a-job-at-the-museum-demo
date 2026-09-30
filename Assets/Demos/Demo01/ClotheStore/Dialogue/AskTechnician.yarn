@@ -1,10 +1,69 @@
-﻿title: AskTechnician
+title: AskTechnician
 ---
-Fred: Excuse me, sir
-Technician: What do you want?
--> Can you help me with...
+<<declare $receivedCrowbar = false>>
+<<declare $isHappy = false>>
+<<declare $hasCokeCan = false>>
+<<declare $lookedDrain = false>>
+Fred: Hello
+<<if $isHappy == true>>
+    <<jump Happy>>
+<<elseif $hasCokeCan == true>>
+    <<jump OfferCoke>>
+<<else>>
+    <<jump Angry>>
+<<endif>>
+===
+
+title: Angry
+---
+-> Can you help me ...
+    <<jump AngryAnswer>>
+===
+
+title: AngryAnswer
+---
 Technician: Allways people want me to help them!
 Technician: Not anymore! I'm busy right now
 ===
 
 
+title: OfferCoke
+---
+-> Can you help me ...
+    <<jump AngryAnswer>>
+-> Can you help me open a drain? <<if $lookedDrain == true and $receivedCrowbar == false>>
+-> You look thirsty, Do you want some coke?
+    Technician: Hey thanks.
+    <<set $hasCokeCan to false>>
+    <<set $isHappy to true>>
+===
+
+
+title: Happy
+---
+-> Can you help me ...
+    <<jump Questions>>
+===
+
+title: Questions
+---
+-> Nothing really.
+    <<jump Bye>>
+-> Can you help me open a drain? <<if $lookedDrain == true and $receivedCrowbar == false>>
+    <<jump Drain>>
+===
+
+title: Drain
+---
+Technician: I can give you this crowbar.
+Fred: Thanks, that can help
+<<set $receivedCrowbar to true>>
+<<jump Bye>>
+===
+
+
+title: Bye
+---
+Technician: Ok.
+Fred: Bye.
+===

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class InventoryService : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class InventoryService : MonoBehaviour
     private List<InventoryItemData> _takenItems = new();
 
     public IReadOnlyList<InventoryItemData> Items => _takenItems;
+
+    public UnityEvent<string> OnAddedItem;
+    public UnityEvent<string> OnDroppedItem;
 
     public void AddItem(string id)
     {
@@ -19,14 +23,18 @@ public class InventoryService : MonoBehaviour
 
         InventoryItemData item = _inventoryItemDatabase.GetById(id);
         if (item != null)
+        {
             _takenItems.Add(item);
+            Debug.Log("Added_ " + item.Id);
+            OnAddedItem?.Invoke(item.Id);
+        }
     }
 
     public void RemoveItem(string id)
     {
         InventoryItemData item = GetTakenItemBy(id);
-        if (item != null)
-            _takenItems.Remove(item);
+        if (item != null && _takenItems.Remove(item))
+            OnDroppedItem?.Invoke(item.Id);
     }
 
     public InventoryItemData GetTakenItemBy(string id)

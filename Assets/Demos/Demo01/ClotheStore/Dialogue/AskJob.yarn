@@ -1,7 +1,7 @@
 ﻿title: AskJobStart
 ---
 <<declare $firstTime = true>>
-<<if $firstTime == true>>    
+<<if $firstTime == true>>
     <<set $firstTime to false>>
     <<jump FirstAsk>>
 <<else>>

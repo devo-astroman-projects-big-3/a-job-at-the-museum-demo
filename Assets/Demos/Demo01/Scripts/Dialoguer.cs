@@ -13,8 +13,8 @@ public class Dialoguer : MonoBehaviour
     [SerializeField] private string _startNode;
     [SerializeField] private MouseCursorUtil _mouseCursorUtil;
     [SerializeField] private GlobalServices _globalServices;
-    [SerializeField] private Transform _playerPosition;
-    [SerializeField] private Transform _npcPosition;
+    /* [SerializeField] private Transform _playerPosition; */
+    /* [SerializeField] private Transform _npcPosition; */
 
     
 

@@ -13,8 +13,9 @@ public class DialoguerVarsChangeNotifier : MonoBehaviour
 
     private void OnEnable()
     {
-        _storageChangeSubscription =
-            _dialogueRunner.VariableStorage.AddChangeListener(OnStorageChange);
+        Debug.Log("_dialogueRunner " + _dialogueRunner);
+        Debug.Log("_dialogueRunner.VariableStorage " + _dialogueRunner.VariableStorage);
+        _storageChangeSubscription = _dialogueRunner.VariableStorage.AddChangeListener(OnStorageChange);
     }
 
     private void OnDisable()
