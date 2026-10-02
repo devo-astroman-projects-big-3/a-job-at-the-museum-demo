@@ -17,4 +17,14 @@ public class ExamTester : MonoBehaviour
 
 
     }
+
+    public void Passed()
+    {
+        Debug.Log("Passed!!!");
+    }
+
+    public void Fail()
+    {
+        Debug.Log("Fail!!!");
+    }
 }

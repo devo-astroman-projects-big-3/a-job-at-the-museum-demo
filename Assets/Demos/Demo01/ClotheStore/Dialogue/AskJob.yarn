@@ -11,6 +11,7 @@
 <<declare $choiceC = "">>
 <<declare $choiceD = "">>
 <<declare $correct = 0>>
+<<declare $passExam = false>>
 <<if $firstTime == true>>
     <<set $firstTime to false>>
     <<jump FirstAsk>>
@@ -107,6 +108,7 @@ title: ExamFinished
 
 title: Fail
 ---
+<<set $passExam to false>>
 MuseumDirector: You fail.
 MuseumDirector: You got only {$nCorrects} of {$totalQuestions}
 
@@ -117,6 +119,7 @@ Fred: Thanks
 
 title: Congrats
 ---
+<<set $passExam to true>>
 MuseumDirector: All corrects.
 MuseumDirector: All corrects, congratulation Mr Fred the job is yours
 Fred: Wonderful!

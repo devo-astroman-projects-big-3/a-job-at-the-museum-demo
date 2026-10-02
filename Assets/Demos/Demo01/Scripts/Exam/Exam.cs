@@ -1,10 +1,14 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Yarn.Unity;
 
 public class Exam : MonoBehaviour
 {
+    public UnityEvent ExamPassed = new UnityEvent();
+    public UnityEvent ExamFailed = new UnityEvent();
+
     [SerializeField] private DialogueRunner _dialogueRunner;
     [SerializeField] private QuestionsDatabase _questionsDatabase;
     [SerializeField, Min(1)] private int _nQuestions = 3;
@@ -90,7 +94,6 @@ public class Exam : MonoBehaviour
     {
         if (!_hasSubscribedToQuestionChanges && _dialogueRunner != null && _dialogueRunner.VariableStorage != null)
         {
-            Debug.Log("SubscribeToQuestionChanges");
             _questionChangeSubscription = _dialogueRunner.VariableStorage.AddChangeListener(OnVariableChanged);
             _hasSubscribedToQuestionChanges = true;
         }
@@ -98,9 +101,10 @@ public class Exam : MonoBehaviour
 
     private void OnVariableChanged(string variableName, object newValue)
     {
-        Debug.Log("OnVariableChanged");
         if (variableName == "$currentQuestion")
             SetNextQuestion();
+        else if (variableName == "$passExam")
+            ProcessEndExam();
     }
 
     private void SetNextQuestion()
@@ -124,4 +128,22 @@ public class Exam : MonoBehaviour
         storage.SetValue("$choiceD", question.ChoiceD ?? string.Empty);
         storage.SetValue("$correct", (float)(char.ToUpperInvariant(question.CorrectChoiceLetter) - 'A' + 1));
     }
+
+    private void ProcessEndExam()
+    {
+        if (_dialogueRunner == null || _dialogueRunner.VariableStorage == null)
+            return;
+
+        if (!_dialogueRunner.VariableStorage.TryGetValue<bool>("$passExam", out bool passExam))
+        {
+            Debug.LogWarning("Exam requires a boolean $passExam variable.", this);
+            return;
+        }
+
+        if (passExam)
+            ExamPassed?.Invoke();
+        else
+            ExamFailed?.Invoke();
+    }
+
 }

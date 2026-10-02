@@ -1,7 +1,10 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Objectives : MonoBehaviour
 {
+    public UnityEvent IsTimeToExam = new UnityEvent();
+
     [SerializeField] private HudUI _hudUI;
 
     [SerializeField] private TasksCompleteState _screenInfoTasks;
@@ -13,13 +16,15 @@ public class Objectives : MonoBehaviour
     private int _nMinigamesCompleted;
     private bool _firstTimeTalkToEmmaCompleted;
 
+    private bool _timeToExam = false;
+
     public void SetInitialSetup(int totalScreenInfo, int nScreenInfoCompleted, int totalMinigames, int nMinigamesCompleted)
     {
         _totalScreenInfo = Mathf.Max(0, totalScreenInfo);
         _nScreenInfoCompleted = Mathf.Clamp(nScreenInfoCompleted, 0, _totalScreenInfo);
         _totalMinigames = Mathf.Max(0, totalMinigames);
         _nMinigamesCompleted = Mathf.Clamp(nMinigamesCompleted, 0, _totalMinigames);
-        RefreshHud();
+        UpdateObjectives();
     }
 
     private void Start()
@@ -34,33 +39,45 @@ public class Objectives : MonoBehaviour
     public void FirstTimeTalkToEmmaCompleted()
     {
         _firstTimeTalkToEmmaCompleted = true;
-        RefreshHud();
+        UpdateObjectives();
     }
 
     public void OneScreenInfoCompleted(string idScreenInfo, int completedCount, int totalCount)
     {
         _totalScreenInfo = Mathf.Max(0, totalCount);
         _nScreenInfoCompleted = Mathf.Clamp(completedCount, 0, _totalScreenInfo);
-        RefreshHud();
+        UpdateObjectives();
     }
 
     public void AllScreenInfoAreCompleted()
     {
         _nScreenInfoCompleted = _totalScreenInfo;
-        RefreshHud();
+        UpdateObjectives();
     }
 
     public void OneMinigameCompleted(string idMingame, int completedCount, int totalCount)
     {
         _totalMinigames = Mathf.Max(0, totalCount);
         _nMinigamesCompleted = Mathf.Clamp(completedCount, 0, _totalMinigames);
-        RefreshHud();
+        UpdateObjectives();
     }
 
     public void AllMinigamesAreCompleted()
     {
         _nMinigamesCompleted = _totalMinigames;
+        UpdateObjectives();
+    }
+
+    private void UpdateObjectives()
+    {
+        bool wasTimeToExam = _timeToExam;
+        _timeToExam = _totalScreenInfo > 0 && _nScreenInfoCompleted == _totalScreenInfo
+            && _totalMinigames > 0 && _nMinigamesCompleted == _totalMinigames;
+
         RefreshHud();
+
+        if (_timeToExam && !wasTimeToExam)
+            IsTimeToExam?.Invoke();
     }
 
     private void RefreshHud()
@@ -76,6 +93,27 @@ public class Objectives : MonoBehaviour
             _hudUI.SetObjectiveList(
                 new string[] { "Talk to museum director" },
                 new bool[] { false });
+            return;
+        }
+
+        if (_timeToExam) //should go to take the exam
+        {
+            _hudUI.SetObjectiveList(
+            new string[]
+            {
+                "Talk to museum director",
+                $"Screens learnt {_nScreenInfoCompleted}/{_totalScreenInfo}",
+                $"Minigames completed {_nMinigamesCompleted}/{_totalMinigames}",
+                "Take interview with museum director",
+            },
+            new bool[]
+            {
+                _firstTimeTalkToEmmaCompleted,
+                _totalScreenInfo > 0 && _nScreenInfoCompleted == _totalScreenInfo,
+                _totalMinigames > 0 && _nMinigamesCompleted == _totalMinigames,
+                false
+            });
+
             return;
         }
 
