@@ -13,10 +13,13 @@ public class ScreenInfo : MonoBehaviour
 
     public void PlayPresentation(string idInfo)
     {
-        _screenInfoGO.SetActive(true);
         ScreenInfoPresentationData screenInfoPresentationData = _screenInfoDatabase.GetById(idInfo);
+        if (screenInfoPresentationData == null)
+            return;
 
+        _screenInfoCanvasUI.SetCurrentRunningId(idInfo);
         _screenInfoCanvasUI.SetInfoScreenInfo(screenInfoPresentationData);
+        _screenInfoGO.SetActive(true);
     }
 
     public void ClosePresentation()

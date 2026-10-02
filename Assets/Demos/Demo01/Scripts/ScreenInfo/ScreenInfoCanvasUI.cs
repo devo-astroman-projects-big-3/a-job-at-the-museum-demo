@@ -18,8 +18,25 @@ public class ScreenInfoCanvasUI : MonoBehaviour
 
     public UnityEvent OnClose;
 
+    public UnityEvent<string> OnAllPagesView; //when invoked should send _currentRunningId
+
     private ScreenInfoPresentationData _presentation;
     private int _currentPageIndex;
+
+    private string _currentRunningId;
+    private bool[] _viewedPages;
+    private int _viewedPageCount;
+    private bool _allPagesViewNotified;
+
+    private void OnEnable()
+    {
+        MarkCurrentPageViewed();
+    }
+
+    public void SetCurrentRunningId(string currentRunningId)
+    {
+        _currentRunningId = currentRunningId;
+    }
 
     public void SetInfoScreenInfo(ScreenInfoPresentationData screenInfoPresentationData)
     {
@@ -27,6 +44,15 @@ public class ScreenInfoCanvasUI : MonoBehaviour
 
         _presentation = screenInfoPresentationData;
         _currentPageIndex = 0;
+        _viewedPages = pages != null ? new bool[pages.Length] : null;
+        _viewedPageCount = 0;
+        _allPagesViewNotified = false;
+        if (pages == null || pages.Length == 0 || pages[0] == null)
+        {
+            SetPageButtonStates(false, false);
+            Debug.LogWarning("Screen info presentation has no valid first page.", this);
+            return;
+        }
         _topTitleLabel.text = _presentation.TopTitle;
         _mainTitleLabel.text = _presentation.MainTitle;
         _subTitleLabel.text = _presentation.SubTitle;
@@ -36,6 +62,8 @@ public class ScreenInfoCanvasUI : MonoBehaviour
 
     public void NextPage()
     {
+        if (_presentation == null)
+            return;
         ScreenInfoPageData[] pages = _presentation.ScreenInfoPageData;
         int nextPageIndex = _currentPageIndex + 1;
         if (pages == null || nextPageIndex >= pages.Length)
@@ -53,6 +81,8 @@ public class ScreenInfoCanvasUI : MonoBehaviour
     }
     public void PrevPage()
     {
+        if (_presentation == null)
+            return;
 
         ScreenInfoPageData[] pages = _presentation.ScreenInfoPageData;
         int previousPageIndex = _currentPageIndex - 1;
@@ -76,6 +106,23 @@ public class ScreenInfoCanvasUI : MonoBehaviour
         _middleImage.enabled = page.MiddleImage != null;
         _descriptionTitleLabel.text = page.DescriptionTitle;
         _descriptionLabel.text = page.Description;
+        MarkCurrentPageViewed();
+    }
+
+    private void MarkCurrentPageViewed()
+    {
+        if (!isActiveAndEnabled || _viewedPages == null || _viewedPages.Length == 0
+            || _allPagesViewNotified || _viewedPages[_currentPageIndex]
+            || _presentation.ScreenInfoPageData[_currentPageIndex] == null)
+            return;
+
+        _viewedPages[_currentPageIndex] = true;
+        _viewedPageCount++;
+        if (_viewedPageCount == _viewedPages.Length)
+        {
+            _allPagesViewNotified = true;
+            OnAllPagesView?.Invoke(_currentRunningId);
+        }
     }
 
     public void Close()

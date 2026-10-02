@@ -9163,6 +9163,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnAllPagesView:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1635661843}
+        m_TargetAssemblyTypeName: TasksCompleteState, Assembly-CSharp
+        m_MethodName: NotifyIsCompleted
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &488431248
 GameObject:
   m_ObjectHideFlags: 0
@@ -32455,7 +32470,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1483842716214933242, guid: 623427ef91e616e47bf00962b9436559, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.36
+      value: -4.1
       objectReference: {fileID: 0}
     - target: {fileID: 1483842716214933242, guid: 623427ef91e616e47bf00962b9436559, type: 3}
       propertyPath: m_LocalPosition.y
@@ -32463,7 +32478,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1483842716214933242, guid: 623427ef91e616e47bf00962b9436559, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -16.6
+      value: 0.18
       objectReference: {fileID: 0}
     - target: {fileID: 1483842716214933242, guid: 623427ef91e616e47bf00962b9436559, type: 3}
       propertyPath: m_LocalRotation.w
@@ -33477,15 +33492,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1190047588679573551, guid: 3ed43e129416607459d944f2048dffbd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.725285
+      value: -17.465284
       objectReference: {fileID: 0}
     - target: {fileID: 1190047588679573551, guid: 3ed43e129416607459d944f2048dffbd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -33.113354
+      value: -16.33335
       objectReference: {fileID: 0}
     - target: {fileID: 1190047588679573551, guid: 3ed43e129416607459d944f2048dffbd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.6399956
+      value: -3.6399975
       objectReference: {fileID: 0}
     - target: {fileID: 3377877417982855122, guid: 3ed43e129416607459d944f2048dffbd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -33545,15 +33560,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8858510411259326729, guid: 3ed43e129416607459d944f2048dffbd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.725285
+      value: -17.465284
       objectReference: {fileID: 0}
     - target: {fileID: 8858510411259326729, guid: 3ed43e129416607459d944f2048dffbd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -33.113354
+      value: -16.33335
       objectReference: {fileID: 0}
     - target: {fileID: 8858510411259326729, guid: 3ed43e129416607459d944f2048dffbd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.6399956
+      value: -3.6399975
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
