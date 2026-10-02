@@ -15,6 +15,9 @@ public class Puzzle : MonoBehaviour
 
         PuzzleMinigameData puzzleMinigameData = _puzzleMinigameDatabase.GetById(id);
 
+        
+        _puzzleCanvasUI.SetCurrentRunningId(id);
+
         _puzzleCanvasUI.Setup(puzzleMinigameData.ImageToSlice, puzzleMinigameData.NSlices);
 
     }

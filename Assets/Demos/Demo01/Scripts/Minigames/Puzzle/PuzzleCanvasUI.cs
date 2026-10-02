@@ -12,11 +12,18 @@ public class PuzzleCanvasUI : MonoBehaviour
     [SerializeField] private Image _imageItemsDraggable;
     [SerializeField] private Image _imageSlot;
 
-    public UnityEvent PuzzleCompletedUnityEvent = new UnityEvent();
+    public UnityEvent<string> PuzzleCompletedUnityEvent;
     private readonly List<UIDragAndDrop> _registeredPieces = new();
     private readonly HashSet<GameObject> _remainingPieces = new();
     private int _correctCount;
     private int _totalPieces;
+
+    private string _currentRunningId;
+
+    public void SetCurrentRunningId(string currentRunningId)
+    {
+        _currentRunningId = currentRunningId;
+    }
 
 
     public void Setup(Sprite imageToSlice, int nSlices)
@@ -119,7 +126,7 @@ public class PuzzleCanvasUI : MonoBehaviour
 
         _correctCount++;
         if (_correctCount == _totalPieces)
-            PuzzleCompletedUnityEvent?.Invoke();
+            PuzzleCompletedUnityEvent?.Invoke(_currentRunningId);
     }
 
     private void RemovePieceListeners()

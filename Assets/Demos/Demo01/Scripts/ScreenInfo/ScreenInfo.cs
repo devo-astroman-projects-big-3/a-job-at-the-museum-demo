@@ -6,6 +6,7 @@ public class ScreenInfo : MonoBehaviour
     [SerializeField] private GameObject _screenInfoGO;
     [SerializeField] private ScreenInfoDatabase _screenInfoDatabase;
     [SerializeField] private ScreenInfoCanvasUI _screenInfoCanvasUI;
+    
 
     
     private GameObject _canvasGO;

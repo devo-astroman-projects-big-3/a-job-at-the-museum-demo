@@ -16,7 +16,7 @@ public class CategorizeCanvasUI : MonoBehaviour
     [SerializeField] private TMP_Text _categoryNameRight;
     
 
-    public UnityEvent OnComplete = new UnityEvent();
+    public UnityEvent<string> OnComplete;
 
     private readonly HashSet<int> _placedLeft = new();
     private readonly HashSet<int> _placedRight = new();
@@ -24,7 +24,12 @@ public class CategorizeCanvasUI : MonoBehaviour
     private int _rightCount;
     private bool _completed;
 
+    private string _currentRunningId;
 
+    public void SetCurrentRunningId(string currentRunningId)
+    {
+        _currentRunningId = currentRunningId;
+    }
 
     public void SetCategoryNames(string nameLeft,string nameRight)
     {
@@ -115,7 +120,7 @@ public class CategorizeCanvasUI : MonoBehaviour
         Debug.Log("COMPLETED !!!");
 
         _completed = true;
-        OnComplete?.Invoke();
+        OnComplete?.Invoke(_currentRunningId);
     }
     
     

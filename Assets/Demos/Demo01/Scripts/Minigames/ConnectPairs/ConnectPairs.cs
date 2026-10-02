@@ -8,13 +8,18 @@ public class ConnectPairs : MonoBehaviour
     [SerializeField] private ConnectPairsCanvasUI _connectPairsCanvasUI;
     [SerializeField] private GameObject _connectPairsCanvasGO;
 
+    
+
 
     public void InitConnectPairsMiniGame(string id)
     {
+
+
         _connectPairsCanvasGO.SetActive(true);
 
         PairConnectMinigameData pairConnectMinigameData = _pairConnectMinigameDatabase.GetById(id);
 
+        _connectPairsCanvasUI.SetCurrentRunningId(id);
         _connectPairsCanvasUI.SetValues(pairConnectMinigameData.PairData);
 
     }

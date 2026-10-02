@@ -22,6 +22,8 @@ public class CategorizeItemsMinigame : MonoBehaviour
          return;
       }
 
+      _categorizeCanvasUI.SetCurrentRunningId(id);
+
       bool leftValid = TrySelectImages(categorizeMinigameData.CategoryLeft,
          categorizeMinigameData.CategoryLeftSelectedIndexes, "left", out Sprite[] leftImages);
       bool rightValid = TrySelectImages(categorizeMinigameData.CategoryRight,

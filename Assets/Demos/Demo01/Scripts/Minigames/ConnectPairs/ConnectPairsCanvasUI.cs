@@ -12,7 +12,7 @@ public class ConnectPairsCanvasUI : MonoBehaviour
     [SerializeField] private PairButton[] _rightGroup;
 
     [SerializeField] private GameObject _congrats;
-    public UnityEvent OnComplete = new UnityEvent();
+    public UnityEvent<string> OnComplete;
 
     private readonly HashSet<PairButton> _matchedButtons = new();
     private int _totalPairs;
@@ -24,6 +24,13 @@ public class ConnectPairsCanvasUI : MonoBehaviour
 
     private bool _leftDragging = false;
     private bool _rightDragging = false;
+
+    private string _currentRunningId;
+
+    public void SetCurrentRunningId(string currentRunningId)
+    {
+        _currentRunningId = currentRunningId;
+    }
 
     public void SetValues(PairData[] pairs)
     {
@@ -224,7 +231,7 @@ public class ConnectPairsCanvasUI : MonoBehaviour
         _completed = true;
         if (_congrats != null)
             _congrats.SetActive(true);
-        OnComplete?.Invoke();
+        OnComplete?.Invoke(_currentRunningId);
     }
 
     private void StartSelectionLine()
