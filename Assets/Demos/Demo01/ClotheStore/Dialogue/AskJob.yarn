@@ -1,6 +1,16 @@
 ﻿title: AskJobStart
 ---
 <<declare $firstTime = true>>
+<<declare $currentQuestion = 0>>
+<<declare $totalQuestions = 3>>
+<<declare $nCorrects = 0>>
+<<declare $selection = 0>>
+<<declare $question = "">>
+<<declare $choiceA = "">>
+<<declare $choiceB = "">>
+<<declare $choiceC = "">>
+<<declare $choiceD = "">>
+<<declare $correct = 0>>
 <<if $firstTime == true>>
     <<set $firstTime to false>>
     <<jump FirstAsk>>
@@ -37,4 +47,77 @@ Fred: Can we try the questions again?
 MuseumDirector: My questions are too advanced for you. And excuse me I'm very busy right now.
 Fred: Ok, bye
 MuseumDirector: bye.
+===
+
+
+
+
+title: ExamAsk
+---
+<<set $currentQuestion to 0>>
+<<set $nCorrects to 0>>
+<<set $selection to 0>>
+MuseumDirector: Ok, so you think you are ready
+Fred: I was born ready.
+MuseumDirector: Lets start
+<<jump NextQuestion>>
+===
+
+
+
+title: NextQuestion
+---
+<<if $currentQuestion >= $totalQuestions>>
+    <<jump ExamFinished>>
+<<endif>>
+<<set $currentQuestion to $currentQuestion + 1>>
+MuseumDirector: {$question}
+-> A- {$choiceA}
+    <<set $selection to 1>>
+    <<jump CheckAnswer>>
+-> B- {$choiceB}
+    <<set $selection to 2>>
+    <<jump CheckAnswer>>
+-> C- {$choiceC}
+    <<set $selection to 3>>
+    <<jump CheckAnswer>>
+-> D- {$choiceD}
+    <<set $selection to 4>>
+    <<jump CheckAnswer>>
+===
+
+title: CheckAnswer
+---
+<<if $selection == $correct>>
+    <<set $nCorrects to $nCorrects + 1>>
+<<endif>>
+<<jump NextQuestion>>
+===
+
+
+title: ExamFinished
+---
+<<if $nCorrects == $totalQuestions>>
+    <<jump Congrats>>
+<<else>>
+    <<jump Fail>>
+<<endif>>
+===
+
+
+title: Fail
+---
+MuseumDirector: You fail.
+MuseumDirector: You got only {$nCorrects} of {$totalQuestions}
+
+Fred: Thanks
+===
+
+
+
+title: Congrats
+---
+MuseumDirector: All corrects.
+MuseumDirector: All corrects, congratulation Mr Fred the job is yours
+Fred: Wonderful!
 ===
