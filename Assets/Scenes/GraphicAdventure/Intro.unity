@@ -5553,10 +5553,10 @@ MonoBehaviour:
   OnActivated:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 876824754}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 876824756}
+        m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
+        m_MethodName: GoGameplay
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -31197,7 +31197,7 @@ PlayableDirector:
   - key: {fileID: -3218232477735284364, guid: 04682bf5778e09a47b6ac3db4e63f170, type: 2}
     value: {fileID: 38910314866128633}
   - key: {fileID: 4116695652528922608, guid: 04682bf5778e09a47b6ac3db4e63f170, type: 2}
-    value: {fileID: 1485943536}
+    value: {fileID: 259017801}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1618400670
@@ -43078,7 +43078,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &910744223953955677
 SpriteRenderer:
   serializedVersion: 2
