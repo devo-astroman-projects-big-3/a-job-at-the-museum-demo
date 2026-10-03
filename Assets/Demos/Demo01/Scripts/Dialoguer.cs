@@ -34,6 +34,7 @@ public class Dialoguer : MonoBehaviour
         _mouseCursorUtil.HideCursor();
 
          //_globalServices.DisableNavAgent();
+         Debug.Log("dialoguer " + this.gameObject.name);
          _globalServices.EnablePlayerThirdPerson();
         
     }
