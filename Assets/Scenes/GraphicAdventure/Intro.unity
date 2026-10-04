@@ -4237,6 +4237,7 @@ Transform:
   m_Children:
   - {fileID: 1618400670}
   - {fileID: 1485943537}
+  - {fileID: 1654849518}
   - {fileID: 259017802}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11996,7 +11997,7 @@ Transform:
   m_GameObject: {fileID: 605181790}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.96, y: 0, z: 0}
+  m_LocalPosition: {x: -16, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -25522,19 +25523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OnActiveDo
   OnActivated:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 194557582}
-        m_TargetAssemblyTypeName: TimelineControl, Assembly-CSharp
-        m_MethodName: PauseTimeline
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!4 &1264703905 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9196766414623937099, guid: 53a95f35c3ac6a441a54d4569b577b27, type: 3}
@@ -28750,7 +28739,7 @@ GameObject:
   - component: {fileID: 1485943537}
   - component: {fileID: 1485943538}
   m_Layer: 0
-  m_Name: ActivateHud
+  m_Name: ActivateDialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28786,10 +28775,22 @@ MonoBehaviour:
   OnActivated:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2144279095}
+      - m_Target: {fileID: 38910314866128633}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 194557582}
+        m_TargetAssemblyTypeName: TimelineControl, Assembly-CSharp
+        m_MethodName: PauseTimeline
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -31176,7 +31177,7 @@ PlayableDirector:
   m_GameObject: {fileID: 1618400668}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 04682bf5778e09a47b6ac3db4e63f170, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: 155847df805946b44b37719196b1b126, type: 2}
   m_InitialState: 1
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
@@ -31197,6 +31198,20 @@ PlayableDirector:
   - key: {fileID: -3218232477735284364, guid: 04682bf5778e09a47b6ac3db4e63f170, type: 2}
     value: {fileID: 38910314866128633}
   - key: {fileID: 4116695652528922608, guid: 04682bf5778e09a47b6ac3db4e63f170, type: 2}
+    value: {fileID: 259017801}
+  - key: {fileID: -3963621459655049304, guid: 155847df805946b44b37719196b1b126, type: 2}
+    value: {fileID: 605181792}
+  - key: {fileID: -4377603649574202084, guid: 155847df805946b44b37719196b1b126, type: 2}
+    value: {fileID: 1714379875}
+  - key: {fileID: -7223693857691224377, guid: 155847df805946b44b37719196b1b126, type: 2}
+    value: {fileID: 1714379877}
+  - key: {fileID: 2572175315354246569, guid: 155847df805946b44b37719196b1b126, type: 2}
+    value: {fileID: 9188286659830619373}
+  - key: {fileID: 4772301164164921212, guid: 155847df805946b44b37719196b1b126, type: 2}
+    value: {fileID: 1485943536}
+  - key: {fileID: 970146250872682524, guid: 155847df805946b44b37719196b1b126, type: 2}
+    value: {fileID: 9073385442614748353}
+  - key: {fileID: 8371851195170854412, guid: 155847df805946b44b37719196b1b126, type: 2}
     value: {fileID: 259017801}
   m_ExposedReferences:
     m_References: []
@@ -32451,6 +32466,65 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1654596991}
   m_CullTransparentMesh: 1
+--- !u!1 &1654849517
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1654849518}
+  - component: {fileID: 1654849519}
+  m_Layer: 0
+  m_Name: ResumeTimeline
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1654849518
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654849517}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 194557583}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1654849519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654849517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b14497b18938c640bfd90feb8247516, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OnActiveDo
+  OnActivated:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 194557582}
+        m_TargetAssemblyTypeName: TimelineControl, Assembly-CSharp
+        m_MethodName: ResumeTimeline
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1660470873
 GameObject:
   m_ObjectHideFlags: 0
@@ -33196,7 +33270,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1483842716214933242, guid: 623427ef91e616e47bf00962b9436559, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.34000015
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1483842716214933242, guid: 623427ef91e616e47bf00962b9436559, type: 3}
       propertyPath: m_LocalPosition.y
@@ -33252,7 +33326,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6611975841948489611, guid: 623427ef91e616e47bf00962b9436559, type: 3}
       propertyPath: m_Name
-      value: Skin
+      value: SkinHero
       objectReference: {fileID: 0}
     - target: {fileID: 7195370930925577850, guid: 623427ef91e616e47bf00962b9436559, type: 3}
       propertyPath: m_Radius
@@ -34264,7 +34338,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1190047588679573551, guid: 3ed43e129416607459d944f2048dffbd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -26.665283
+      value: -29.705284
       objectReference: {fileID: 0}
     - target: {fileID: 1190047588679573551, guid: 3ed43e129416607459d944f2048dffbd, type: 3}
       propertyPath: m_LocalPosition.y
@@ -34348,7 +34422,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8858510411259326729, guid: 3ed43e129416607459d944f2048dffbd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -26.665283
+      value: -29.705284
       objectReference: {fileID: 0}
     - target: {fileID: 8858510411259326729, guid: 3ed43e129416607459d944f2048dffbd, type: 3}
       propertyPath: m_LocalPosition.y
