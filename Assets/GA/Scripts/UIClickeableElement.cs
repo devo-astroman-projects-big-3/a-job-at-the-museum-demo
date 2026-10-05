@@ -5,14 +5,22 @@ using UnityEngine.UI;
 
 public class UIClickeableElement : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    public UnityEvent ClickUnityEvent = new UnityEvent();
+    #region Fields
     private Outline outline;
+    #endregion
 
+    #region public properties
+    public UnityEvent ClickUnityEvent = new UnityEvent();
+    #endregion
+
+    #region Unity Callbacks
     void Awake() {
         outline = GetComponent<Outline>();
         if (outline) outline.enabled = false;
     }
+    #endregion
 
+    #region Public methods
     public void OnPointerEnter(PointerEventData eventData) {
         if (outline) outline.enabled = true;
         // optional: scale effect
@@ -31,4 +39,5 @@ public class UIClickeableElement : MonoBehaviour, IPointerEnterHandler, IPointer
         if (outline) outline.enabled = false;
         transform.localScale = Vector3.one;
     }
+    #endregion
 }

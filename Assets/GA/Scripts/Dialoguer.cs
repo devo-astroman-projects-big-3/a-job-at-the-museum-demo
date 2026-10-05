@@ -5,19 +5,24 @@ using System;
 using Yarn.Unity;
 
 public class Dialoguer : MonoBehaviour
-{   
-
+{
+    #region Fields
     [SerializeField] private Canvas _canvas;
+
     [SerializeField] private ProximityPrompt _proximityPrompt;
+
     [SerializeField] private GameObject _dialogueRunnerHolder;
+
     [SerializeField] private string _startNode;
+
     [SerializeField] private MouseCursorUtil _mouseCursorUtil;
+
     [SerializeField] private GlobalServices _globalServices;
     /* [SerializeField] private Transform _playerPosition; */
     /* [SerializeField] private Transform _npcPosition; */
+    #endregion
 
-    
-
+    #region Public methods
     public void PlayerAskToTalk()
     {   
         HandlePlayerMovedAndLookingAtPlace();
@@ -38,8 +43,9 @@ public class Dialoguer : MonoBehaviour
          _globalServices.EnablePlayerThirdPerson();
         
     }
+    #endregion
 
-
+    #region Private methods
     private void HandlePlayerMovedAndLookingAtPlace()
     {
         _canvas.sortingOrder = 10;
@@ -51,4 +57,5 @@ public class Dialoguer : MonoBehaviour
 
         //_globalServices.PlayerMovedAndLookingAtPlace -= HandlePlayerMovedAndLookingAtPlace;
     }
+    #endregion
 }

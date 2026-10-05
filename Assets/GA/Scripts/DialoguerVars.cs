@@ -3,9 +3,11 @@ using Yarn.Unity;
 
 public class DialoguerVars : MonoBehaviour
 {
+    #region Fields
     [SerializeField] private DialogueRunner _dialogueRunner;
+    #endregion
 
-
+    #region Public methods
     public void SetToTrue(string variableName)
     {
         _dialogueRunner.VariableStorage.SetValue(variableName, true);
@@ -15,7 +17,6 @@ public class DialoguerVars : MonoBehaviour
     {
         _dialogueRunner.VariableStorage.SetValue(variableName, false);
     }
-    
 
     public void ChangeVariable(string variableName, object newValue)
     {
@@ -53,4 +54,5 @@ public class DialoguerVars : MonoBehaviour
                 break;
         }
     }
+    #endregion
 }

@@ -4,19 +4,26 @@ using UnityEngine.AI;
 
 public class MoverPlayerService : MonoBehaviour
 {
-    [SerializeField] private NavMeshAgent _agent;    
+    #region Fields
+    [SerializeField] private NavMeshAgent _agent;
 
+    private bool _waitingForDestination;
+
+    private bool _lookAtDestinationWhenReached;
+
+    private Vector3 _lookAtPosition;
+    #endregion
+
+    #region public properties
     public bool IsMoving =>
         _agent != null &&
         _agent.hasPath &&
         !_agent.isStopped;
 
     public event Action DestinationReached;
+    #endregion
 
-    private bool _waitingForDestination;
-    private bool _lookAtDestinationWhenReached;
-    private Vector3 _lookAtPosition;
-
+    #region Unity Callbacks
     private void Awake()
     {
         if (_agent == null)
@@ -28,7 +35,9 @@ public class MoverPlayerService : MonoBehaviour
     {
         CheckDestinationReached();
     }
+    #endregion
 
+    #region Public methods
     public bool GoTo(Vector3 position)
     {
         _lookAtDestinationWhenReached = false;
@@ -76,6 +85,13 @@ public class MoverPlayerService : MonoBehaviour
         _agent.enabled = false;
     }
 
+    public void PlayerLookAt(Vector3 lookAt)
+    {
+        _agent.transform.LookAt(lookAt);
+    }
+    #endregion
+
+    #region Private methods
     private void CheckDestinationReached()
     {
         if (!_waitingForDestination || _agent.pathPending)
@@ -103,9 +119,5 @@ public class MoverPlayerService : MonoBehaviour
 
         DestinationReached?.Invoke();
     }
-
-    public void PlayerLookAt(Vector3 lookAt)
-    {
-        _agent.transform.LookAt(lookAt);
-    }
+    #endregion
 }

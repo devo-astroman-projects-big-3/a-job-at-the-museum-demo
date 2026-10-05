@@ -5,12 +5,19 @@ using Yarn.Unity;
 
 public class DialoguerVarsChangeNotifier : MonoBehaviour
 {
+    #region Fields
     [SerializeField] private DialogueRunner _dialogueRunner;
+
     [SerializeField] private string[] _variables;
-    public UnityEvent<string,object> VariableChanged = new UnityEvent<string,object>();
 
     private IDisposable _storageChangeSubscription;
+    #endregion
 
+    #region public properties
+    public UnityEvent<string,object> VariableChanged = new UnityEvent<string,object>();
+    #endregion
+
+    #region Unity Callbacks
     private void OnEnable()
     {
         Debug.Log("_dialogueRunner " + _dialogueRunner);
@@ -23,7 +30,9 @@ public class DialoguerVarsChangeNotifier : MonoBehaviour
         _storageChangeSubscription?.Dispose();
         _storageChangeSubscription = null;
     }
+    #endregion
 
+    #region Private methods
     private void OnStorageChange(string variableName, object newValue)
     {
         if (_variables == null || Array.IndexOf(_variables, variableName) < 0)
@@ -33,4 +42,5 @@ public class DialoguerVarsChangeNotifier : MonoBehaviour
 
         VariableChanged?.Invoke(variableName,newValue);
     }
+    #endregion
 }

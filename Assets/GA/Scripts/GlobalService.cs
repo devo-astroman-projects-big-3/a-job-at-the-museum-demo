@@ -3,12 +3,27 @@ using System;
 
 public class GlobalService : MonoBehaviour
 {
+    #region Fields
     [SerializeField] private MoverPlayerService _moverPlayerService;
+
     [SerializeField] private PlayerThirdPerson _playerThirdPerson;
 
     private Vector3 _lookAtPosition;
-    public event Action PlayerMovedAndLookingAtPlace;
+    #endregion
 
+    #region public properties
+    public event Action PlayerMovedAndLookingAtPlace;
+    #endregion
+
+    #region Unity Callbacks
+    private void OnDisable()
+    {
+        if (_moverPlayerService != null)
+            _moverPlayerService.DestinationReached -= OnPlayerReachedDestination;
+    }
+    #endregion
+
+    #region Public methods
     public void MoveAndLookPlayerTo(Transform position, Transform lookTo)
     {
         if (position == null || lookTo == null)
@@ -39,14 +54,9 @@ public class GlobalService : MonoBehaviour
     {
         _moverPlayerService.DeactivateNavmeshAgent();
     }
+    #endregion
 
-
-    private void OnDisable()
-    {
-        if (_moverPlayerService != null)
-            _moverPlayerService.DestinationReached -= OnPlayerReachedDestination;
-    }
-
+    #region Private methods
     private void OnPlayerReachedDestination()
     {
 
@@ -55,4 +65,5 @@ public class GlobalService : MonoBehaviour
         _moverPlayerService.DestinationReached -= OnPlayerReachedDestination;
         PlayerMovedAndLookingAtPlace?.Invoke();
     }
+    #endregion
 }

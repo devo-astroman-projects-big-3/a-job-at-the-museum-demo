@@ -3,8 +3,11 @@ using UnityEngine.Playables;
 
 public class TimelineControl : MonoBehaviour
 {
+    #region Fields
     [SerializeField] private PlayableDirector director;
+    #endregion
 
+    #region Public methods
     public void StartTimeline()
     {
         director.Play();
@@ -20,4 +23,5 @@ public class TimelineControl : MonoBehaviour
         Debug.Log("Resume!!! ");
         director.Resume();
     }
+    #endregion
 }

@@ -5,13 +5,30 @@ using UnityEngine.UI;
 
 public class FadeToUtils : MonoBehaviour
 {
-    public UnityEvent OnFadeCompleted = new UnityEvent();
-
+    #region Fields
     [SerializeField] private Image _image;
+
     [SerializeField, Min(0f)] private float _duration = 1f;
 
     private Coroutine _fadeCoroutine;
+    #endregion
 
+    #region public properties
+    public UnityEvent OnFadeCompleted = new UnityEvent();
+    #endregion
+
+    #region Unity Callbacks
+    private void OnDisable()
+    {
+        if (_fadeCoroutine != null)
+        {
+            StopCoroutine(_fadeCoroutine);
+            _fadeCoroutine = null;
+        }
+    }
+    #endregion
+
+    #region Public methods
     public void FadeToOpacity()
     {
         StartFade(0f, 1f);
@@ -21,7 +38,9 @@ public class FadeToUtils : MonoBehaviour
     {
         StartFade(1f, 0f);
     }
+    #endregion
 
+    #region Private methods
     private void StartFade(float startAlpha, float targetAlpha)
     {
         if (_image == null)
@@ -77,13 +96,5 @@ public class FadeToUtils : MonoBehaviour
         color.a = alpha;
         _image.color = color;
     }
-
-    private void OnDisable()
-    {
-        if (_fadeCoroutine != null)
-        {
-            StopCoroutine(_fadeCoroutine);
-            _fadeCoroutine = null;
-        }
-    }
+    #endregion
 }

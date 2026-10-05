@@ -2,10 +2,13 @@ using UnityEngine;
 
 public class IntroControl : MonoBehaviour
 {
-    [SerializeField] private GameObject[] _gos;    
-    
-    private int _iGo = 0;
+    #region Fields
+    [SerializeField] private GameObject[] _gos;
 
+    private int _iGo = 0;
+    #endregion
+
+    #region Public methods
     public void Next()
     {
         if (_gos == null || _gos.Length == 0 || _iGo >= _gos.Length)
@@ -20,4 +23,5 @@ public class IntroControl : MonoBehaviour
         if (nextIndex < _gos.Length && _gos[nextIndex] != null)
             _gos[nextIndex].SetActive(true);
     }
+    #endregion
 }

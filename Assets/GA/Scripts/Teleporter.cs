@@ -2,9 +2,13 @@ using UnityEngine;
 
 public class Teleporter : MonoBehaviour
 {
+    #region Fields
     [SerializeField] private Transform[] _startPoints; //0-Street 1-Museum
-    [SerializeField] private Transform _heroToTransport;
 
+    [SerializeField] private Transform _heroToTransport;
+    #endregion
+
+    #region Public methods
     public void TeleportToStreet()
     {
         TeleportTo(0);
@@ -14,7 +18,9 @@ public class Teleporter : MonoBehaviour
     {
         TeleportTo(1);
     }
+    #endregion
 
+    #region Private methods
     private void TeleportTo(int index)
     {
         if (_heroToTransport == null)
@@ -40,4 +46,5 @@ public class Teleporter : MonoBehaviour
         if (controllerWasEnabled)
             controller.enabled = true;
     }
+    #endregion
 }

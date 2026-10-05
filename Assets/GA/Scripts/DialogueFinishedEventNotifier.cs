@@ -5,10 +5,17 @@ using Yarn.Unity;
 
 public class DialogueFinishedEventNotifier : MonoBehaviour
 {
+    #region Fields
     [SerializeField] private DialogueRunner _dialogueRunner;
-    public event Action<GameObject> Completed;
-    public UnityEvent<GameObject> OnCompleted;
+    #endregion
 
+    #region public properties
+    public event Action<GameObject> Completed;
+
+    public UnityEvent<GameObject> OnCompleted;
+    #endregion
+
+    #region Unity Callbacks
     private void OnEnable()
     {
         _dialogueRunner.onDialogueComplete.AddListener(OnDialogueFinished);
@@ -18,11 +25,14 @@ public class DialogueFinishedEventNotifier : MonoBehaviour
     {
         _dialogueRunner.onDialogueComplete.RemoveListener(OnDialogueFinished);
     }
+    #endregion
 
+    #region Private methods
     private void OnDialogueFinished()
     {
         
         Completed?.Invoke(gameObject);
         OnCompleted?.Invoke(gameObject);
     }
+    #endregion
 }

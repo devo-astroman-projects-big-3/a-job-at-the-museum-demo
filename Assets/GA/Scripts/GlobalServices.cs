@@ -3,13 +3,27 @@ using System;
 
 public class GlobalServices : MonoBehaviour
 {
+    #region Fields
+
     //[SerializeField] private MoverPlayerService _moverPlayerService;
     [SerializeField] private CharacterControllerMovement _characterControllerMovement;
 
-
     private Vector3 _lookAtPosition;
-    public event Action PlayerMovedAndLookingAtPlace;
+    #endregion
 
+    #region public properties
+    public event Action PlayerMovedAndLookingAtPlace;
+    #endregion
+
+    #region Unity Callbacks
+    private void OnDisable()
+    {
+        //if (_moverPlayerService != null)
+        //    _moverPlayerService.DestinationReached -= OnPlayerReachedDestination;
+    }
+    #endregion
+
+    #region Public methods
     public void MoveAndLookPlayerTo(Transform position, Transform lookTo)
     {
         if (position == null || lookTo == null)
@@ -46,15 +60,10 @@ public class GlobalServices : MonoBehaviour
     public void PlayScreenInfo(int id)
     {
         Debug.Log("playing " + id);
-    }    
-
-
-    private void OnDisable()
-    {
-        //if (_moverPlayerService != null)
-        //    _moverPlayerService.DestinationReached -= OnPlayerReachedDestination;
     }
+    #endregion
 
+    #region Private methods
     private void OnPlayerReachedDestination()
     {
 
@@ -63,4 +72,5 @@ public class GlobalServices : MonoBehaviour
         //_moverPlayerService.DestinationReached -= OnPlayerReachedDestination;
         PlayerMovedAndLookingAtPlace?.Invoke();
     }
+    #endregion
 }

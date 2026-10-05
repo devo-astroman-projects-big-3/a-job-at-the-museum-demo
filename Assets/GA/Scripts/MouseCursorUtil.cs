@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class MouseCursorUtil : MonoBehaviour
 {
+    #region Public methods
     public void ShowCursor()
     {
         //Cursor.visible = true;
@@ -13,4 +14,5 @@ public class MouseCursorUtil : MonoBehaviour
         //Cursor.visible = false;
         //Cursor.lockState = CursorLockMode.Locked;
     }
+    #endregion
 }

@@ -2,10 +2,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
-{   
+{
+    #region Fields
     [SerializeField] private string _gameplay;
-    [SerializeField] private string _outro;
 
+    [SerializeField] private string _outro;
+    #endregion
+
+    #region Public methods
     public void GoGameplay()
     {
         ChangeScene(_gameplay);
@@ -15,7 +19,9 @@ public class SceneChanger : MonoBehaviour
     {
         ChangeScene(_outro);
     }
+    #endregion
 
+    #region Private methods
     private void ChangeScene(string sceneName)
     {
         if (string.IsNullOrWhiteSpace(sceneName) || !Application.CanStreamedLevelBeLoaded(sceneName))
@@ -26,5 +32,5 @@ public class SceneChanger : MonoBehaviour
 
         SceneManager.LoadScene(sceneName);
     }
-   
+    #endregion
 }

@@ -5,16 +5,25 @@ using UnityEngine.Events;
 
 public class ProximityPrompt : MonoBehaviour
 {
+    #region Fields
     [SerializeField] private TMP_Text _EInteractLabel;
+
     [SerializeField] private InteractionArea _interactionArea;
 
-    public UnityEvent<GameObject> Interacted = new UnityEvent<GameObject>();
-
     private Coroutine _cooldownCoroutine;
-    private bool _isOnCooldown;
-    private bool _labelWasEnabled;
-    private bool _interactionWasEnabled;
 
+    private bool _isOnCooldown;
+
+    private bool _labelWasEnabled;
+
+    private bool _interactionWasEnabled;
+    #endregion
+
+    #region public properties
+    public UnityEvent<GameObject> Interacted = new UnityEvent<GameObject>();
+    #endregion
+
+    #region Unity Callbacks
     private void OnEnable()
     {
         _interactionArea.InteractionMade += HandleInteractionMade;
@@ -37,11 +46,14 @@ public class ProximityPrompt : MonoBehaviour
         _interactionArea.EntersArea -= HandleEntersArea;
         _interactionArea.ExitsArea -= HandleExitsArea;
     }
+
     private void Start()
     {
         _EInteractLabel.enabled = false;
     }
+    #endregion
 
+    #region Public methods
     public void SetEInteractLabel(string text)
     {
         if (_EInteractLabel != null)
@@ -59,8 +71,9 @@ public class ProximityPrompt : MonoBehaviour
         _interactionArea.Activate();
         _EInteractLabel.enabled = true;
     }
+    #endregion
 
-
+    #region Private methods
     private void HandleInteractionMade(GameObject interactedObject)
     {
         if (_isOnCooldown || !isActiveAndEnabled)
@@ -107,9 +120,5 @@ public class ProximityPrompt : MonoBehaviour
         if (_EInteractLabel != null)
             _EInteractLabel.enabled = _labelWasEnabled;
     }
-
-
-
-
-
+    #endregion
 }
