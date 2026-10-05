@@ -96,6 +96,15 @@ public class Exam : MonoBehaviour
         storage.SetValue("$nCorrects", 0f);
         storage.SetValue("$selection", 0f);
     }
+
+    public bool HasPassedExam()
+    {
+        if (_dialogueRunner == null || _dialogueRunner.VariableStorage == null)
+            return false;
+
+        var storage = _dialogueRunner.VariableStorage;
+        return storage.TryGetValue<bool>("$passExam", out bool passExam) && passExam;
+    }
     #endregion
 
     #region Private methods
