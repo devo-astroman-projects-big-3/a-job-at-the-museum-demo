@@ -73,7 +73,15 @@ public class TasksCompleteState : MonoBehaviour
                 completedCount++;
 
             if (matchingState == null && state.Id == idTask)
+            {
+                CompleteMarker c = state.gameObject.GetComponent<CompleteMarker>();
+                if(c)
+                    c.MarkAsComplete();
+                else
+                    Debug.Log("pending CompleteMarker");
+
                 matchingState = state;
+            }
         }
 
         if (matchingState == null || matchingState.IsCompleted)
