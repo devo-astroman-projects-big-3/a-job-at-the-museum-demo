@@ -5,21 +5,22 @@ using Yarn.Unity;
 
 public class InventoryItemChangeNotifier : MonoBehaviour
 {
+    #region Fields
     [SerializeField] private DialogueRunner _dialogueRunner;
     [SerializeField] private InventoryItemData _itemData;
     [SerializeField] private string _variableName;
-
     [SerializeField] private bool _newValueOnAdded;
     [SerializeField] private bool _newValueOnDropped;
-    
+    #endregion
 
+    #region Public methods
     public void AddItem(string id)
     {
         if (id == _itemData.Id){
             Debug.Log("AddItem " + id);
             _dialogueRunner.VariableStorage.SetValue(_variableName, _newValueOnAdded);
         }
-         
+
     }
 
     public void RemoveItem(string id)
@@ -29,6 +30,5 @@ public class InventoryItemChangeNotifier : MonoBehaviour
             _dialogueRunner.VariableStorage.SetValue(_variableName, _newValueOnDropped);
         }
     }
-
-
+    #endregion
 }

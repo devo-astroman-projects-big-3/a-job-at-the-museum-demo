@@ -1,10 +1,12 @@
 using UnityEngine;
 
 public class InventoryMinigame : MonoBehaviour
-{    
-    
+{
+    #region Fields
     [SerializeField] private InventoryMinigameCanvasUI[] _inventoryMinigameCanvasUI;
+    #endregion
 
+    #region Public methods
     public void InitInventoryMinigame(string id)
     {
         if (_inventoryMinigameCanvasUI == null || string.IsNullOrEmpty(id))
@@ -28,8 +30,6 @@ public class InventoryMinigame : MonoBehaviour
             if (canvasUI != null)
                 canvasUI.gameObject.SetActive(false);
         }
-    } 
-
-
-
+    }
+    #endregion
 }

@@ -5,34 +5,37 @@ using UnityEngine.Events;
 
 public class ScreenInfoCanvasUI : MonoBehaviour
 {
-    
+    #region Fields
     [SerializeField] private TMP_Text _topTitleLabel;
     [SerializeField] private TMP_Text _mainTitleLabel;
     [SerializeField] private TMP_Text _subTitleLabel;
     [SerializeField] private Image _middleImage;
     [SerializeField] private TMP_Text _descriptionTitleLabel;
     [SerializeField] private TMP_Text _descriptionLabel;
-
     [SerializeField] private Button _leftPageButton;
     [SerializeField] private Button _rightPageButton;
-
-    public UnityEvent OnClose;
-
-    public UnityEvent<string> OnAllPagesView; //when invoked should send _currentRunningId
-
     private ScreenInfoPresentationData _presentation;
     private int _currentPageIndex;
-
     private string _currentRunningId;
     private bool[] _viewedPages;
     private int _viewedPageCount;
     private bool _allPagesViewNotified;
+    #endregion
 
+    #region public properties
+    public UnityEvent OnClose;
+
+    public UnityEvent<string> OnAllPagesView; //when invoked should send _currentRunningId
+    #endregion
+
+    #region Unity Callbacks
     private void OnEnable()
     {
         MarkCurrentPageViewed();
     }
+    #endregion
 
+    #region Public methods
     public void SetCurrentRunningId(string currentRunningId)
     {
         _currentRunningId = currentRunningId;
@@ -79,6 +82,7 @@ public class ScreenInfoCanvasUI : MonoBehaviour
         ShowPage(pages[_currentPageIndex]);
         SetPageButtonStates(_currentPageIndex > 0, _currentPageIndex < pages.Length - 1);
     }
+
     public void PrevPage()
     {
         if (_presentation == null)
@@ -100,6 +104,20 @@ public class ScreenInfoCanvasUI : MonoBehaviour
         SetPageButtonStates(_currentPageIndex > 0, _currentPageIndex < pages.Length - 1);
     }
 
+    public void Close()
+    {
+        OnClose?.Invoke();
+    }
+
+    public void SetPageButtonStates(bool leftInteractable, bool rightInteractable)
+    {
+        _leftPageButton.interactable = leftInteractable;
+
+        _rightPageButton.interactable = rightInteractable;
+    }
+    #endregion
+
+    #region Private methods
     private void ShowPage(ScreenInfoPageData page)
     {
         _middleImage.sprite = page.MiddleImage;
@@ -124,16 +142,5 @@ public class ScreenInfoCanvasUI : MonoBehaviour
             OnAllPagesView?.Invoke(_currentRunningId);
         }
     }
-
-    public void Close()
-    {
-        OnClose?.Invoke();
-    }
-
-    public void SetPageButtonStates(bool leftInteractable, bool rightInteractable)
-    {
-        _leftPageButton.interactable = leftInteractable;
-
-        _rightPageButton.interactable = rightInteractable;
-    }
+    #endregion
 }

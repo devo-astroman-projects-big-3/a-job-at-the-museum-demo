@@ -4,10 +4,12 @@ using UnityEngine.UI;
 
 public class PieceDragger : MonoBehaviour
 {
+    #region Fields
     [SerializeField] private Image[] _draggablePieces;
     [SerializeField] private Image[] _slotPieces;
+    #endregion
 
-
+    #region Public methods
     public void SetPiecesAndSlots(Image[] draggablePieces, Image[] slotPieces)
     {
         _draggablePieces = draggablePieces;
@@ -71,7 +73,5 @@ public class PieceDragger : MonoBehaviour
             drag.Configure(piece, _slotPieces[i]);
         }
     }
-
-
-
+    #endregion
 }

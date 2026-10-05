@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class CategorizeItemsMinigame : MonoBehaviour
 {
-    
+    #region Fields
    [SerializeField] private CategorizeMinigameDatabase _categorizeMinigameDatabase;
-   
    [SerializeField] private CategorizeCanvasUI _categorizeCanvasUI;
    [SerializeField] private GameObject _categorizeCanvasGO;
+    #endregion
 
+    #region Public methods
    public void InitCategorizeMiniGame(string id)
    {
       if (_categorizeMinigameDatabase == null || _categorizeCanvasUI == null || _categorizeCanvasGO == null)
@@ -34,11 +35,18 @@ public class CategorizeItemsMinigame : MonoBehaviour
       _categorizeCanvasGO.SetActive(true);
       _categorizeCanvasUI.RandomizePositions();
       _categorizeCanvasUI.HideCongratsMsg();
-      _categorizeCanvasUI.SetCategoryNames(categorizeMinigameData.CategoryLeft.CategoryName, 
+      _categorizeCanvasUI.SetCategoryNames(categorizeMinigameData.CategoryLeft.CategoryName,
       categorizeMinigameData.CategoryRight.CategoryName);
       _categorizeCanvasUI.SetValues(leftImages, rightImages);
    }
 
+   public void CloseMinigame()
+   {
+      _categorizeCanvasGO.SetActive(false);
+   }
+    #endregion
+
+    #region Private methods
    private bool TrySelectImages(CategoryData category, int[] indexes, string side, out Sprite[] images)
    {
       images = null;
@@ -63,9 +71,5 @@ public class CategorizeItemsMinigame : MonoBehaviour
       }
       return true;
    }
-
-   public void CloseMinigame()
-   {
-      _categorizeCanvasGO.SetActive(false);
-   }
+    #endregion
 }

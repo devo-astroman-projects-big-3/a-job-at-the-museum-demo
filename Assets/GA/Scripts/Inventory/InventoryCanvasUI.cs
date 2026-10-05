@@ -5,17 +5,20 @@ using UnityEngine.Events;
 
 public class InventoryCanvasUI : MonoBehaviour
 {
-    
+    #region Fields
     [SerializeField] private InventoryService _inventoryService;
     [SerializeField] private InventorySlotUI[] _inventorySlotsUI;
     [SerializeField] private Button _nextButton;
     [SerializeField] private Button _prevButton;
     [SerializeField] private Image[] _elementsToDropOn;
-    public UnityEvent<GameObject,GameObject> CorrectDrop = new UnityEvent<GameObject,GameObject>();
-
     private int _currentPage;
+    #endregion
 
+    #region public properties
+    public UnityEvent<GameObject,GameObject> CorrectDrop = new UnityEvent<GameObject,GameObject>();
+    #endregion
 
+    #region Unity Callbacks
     private void OnEnable()
     {
         if (_nextButton != null)
@@ -35,7 +38,9 @@ public class InventoryCanvasUI : MonoBehaviour
         if (_prevButton != null)
             _prevButton.onClick.RemoveListener(PrevPage);
     }
+    #endregion
 
+    #region Public methods
     public void NextPage()
     {
         _currentPage++;
@@ -71,7 +76,9 @@ public class InventoryCanvasUI : MonoBehaviour
     {
         CorrectDrop?.Invoke(inventoryItemGO,elementGO);
     }
+    #endregion
 
+    #region Private methods
     private void RefreshSlots()
     {
         int slotCount = _inventorySlotsUI == null ? 0 : _inventorySlotsUI.Length;
@@ -110,4 +117,5 @@ public class InventoryCanvasUI : MonoBehaviour
                 dragAndDrop.SetSlots(_elementsToDropOn);
         }
     }
+    #endregion
 }

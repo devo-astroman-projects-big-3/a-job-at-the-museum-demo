@@ -6,28 +6,22 @@ using Yarn.Unity;
 
 public class Exam : MonoBehaviour
 {
-    public UnityEvent ExamPassed = new UnityEvent();
-    public UnityEvent ExamFailed = new UnityEvent();
-
+    #region Fields
     [SerializeField] private DialogueRunner _dialogueRunner;
     [SerializeField] private QuestionsDatabase _questionsDatabase;
     [SerializeField, Min(1)] private int _nQuestions = 3;
-
     private Question[] _questions;
     private IDisposable _questionChangeSubscription;
     private bool _hasSubscribedToQuestionChanges;
+    #endregion
 
-    public void InitialSetup()
-    {
-        CreateANewExam();
-        if (_questions != null && _questions.Length > 0)
-        {
-            if (!_hasSubscribedToQuestionChanges)
-                SubscribeToQuestionChanges();
-            SetNextQuestion();
-        }
-    }
+    #region public properties
+    public UnityEvent ExamPassed = new UnityEvent();
 
+    public UnityEvent ExamFailed = new UnityEvent();
+    #endregion
+
+    #region Unity Callbacks
     private void OnEnable()
     {
         InitialSetup();
@@ -37,6 +31,19 @@ public class Exam : MonoBehaviour
     {
         _questionChangeSubscription?.Dispose();
         _questionChangeSubscription = null;
+    }
+    #endregion
+
+    #region Public methods
+    public void InitialSetup()
+    {
+        CreateANewExam();
+        if (_questions != null && _questions.Length > 0)
+        {
+            if (!_hasSubscribedToQuestionChanges)
+                SubscribeToQuestionChanges();
+            SetNextQuestion();
+        }
     }
 
     public void CreateANewExam()
@@ -89,7 +96,9 @@ public class Exam : MonoBehaviour
         storage.SetValue("$nCorrects", 0f);
         storage.SetValue("$selection", 0f);
     }
+    #endregion
 
+    #region Private methods
     private void SubscribeToQuestionChanges()
     {
         if (!_hasSubscribedToQuestionChanges && _dialogueRunner != null && _dialogueRunner.VariableStorage != null)
@@ -145,5 +154,5 @@ public class Exam : MonoBehaviour
         else
             ExamFailed?.Invoke();
     }
-
+    #endregion
 }

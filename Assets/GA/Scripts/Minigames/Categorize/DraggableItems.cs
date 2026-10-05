@@ -6,12 +6,13 @@ using UnityEngine.EventSystems;
 
 public class DraggableItems : MonoBehaviour
 {
-   
+    #region Fields
    [SerializeField] private Image[] _leftSlotDraggableItemImages;
    [SerializeField] private Image[] _rightSlotDraggableItemImages;
    [SerializeField] private Image[] _allSlotDraggableItemImages;
+    #endregion
 
-
+    #region Public methods
    public void RandomizePositions()
    {
       if (_allSlotDraggableItemImages == null)
@@ -62,6 +63,25 @@ public class DraggableItems : MonoBehaviour
       SetImages(_rightSlotDraggableItemImages, spriteImgs);
    }
 
+   public bool CanSetImages(Sprite[] left, Sprite[] right)
+   {
+      bool leftValid = CanSetImages(_leftSlotDraggableItemImages, left, "_leftSlotDraggableItemImages");
+      bool rightValid = CanSetImages(_rightSlotDraggableItemImages, right, "_rightSlotDraggableItemImages");
+      return leftValid && rightValid;
+   }
+
+   public void HideLeftItem(int index)
+   {
+      _leftSlotDraggableItemImages[index].gameObject.SetActive(false);
+   }
+
+   public void HideRightItem(int index)
+   {
+      _rightSlotDraggableItemImages[index].gameObject.SetActive(false);
+   }
+    #endregion
+
+    #region Private methods
    private static void SetImages(Image[] images, Sprite[] sprites)
    {
       for (int i = 0; i < images.Length; i++)
@@ -69,13 +89,6 @@ public class DraggableItems : MonoBehaviour
          images[i].sprite = i < sprites.Length ? sprites[i] : null;
          images[i].gameObject.SetActive(i < sprites.Length);
       }
-   }
-
-   public bool CanSetImages(Sprite[] left, Sprite[] right)
-   {
-      bool leftValid = CanSetImages(_leftSlotDraggableItemImages, left, "_leftSlotDraggableItemImages");
-      bool rightValid = CanSetImages(_rightSlotDraggableItemImages, right, "_rightSlotDraggableItemImages");
-      return leftValid && rightValid;
    }
 
    private bool CanSetImages(Image[] images, Sprite[] sprites, string fieldName)
@@ -103,17 +116,5 @@ public class DraggableItems : MonoBehaviour
       }
       return valid;
    }
-
-   public void HideLeftItem(int index)
-   {
-      _leftSlotDraggableItemImages[index].gameObject.SetActive(false);
-   }
-
-   public void HideRightItem(int index)
-   {
-      _rightSlotDraggableItemImages[index].gameObject.SetActive(false);
-   }
-
-
-
+    #endregion
 }

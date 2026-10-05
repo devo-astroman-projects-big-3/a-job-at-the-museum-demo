@@ -4,23 +4,29 @@ using UnityEngine.Events;
 
 public class InventoryService : MonoBehaviour
 {
+    #region Fields
     [SerializeField] private InventoryItemDatabase _inventoryItemDatabase;
-
     private List<InventoryItemData> _takenItems = new();
+    #endregion
 
+    #region public properties
     public IReadOnlyList<InventoryItemData> Items => _takenItems;
 
     public UnityEvent<string> OnAddedItem;
+
     public UnityEvent<string> OnDroppedItem;
+    #endregion
 
-
+    #region Unity Callbacks
     private void Start()
     {
         /* testing purposes */
 
         //AddItem("keys");
     }
+    #endregion
 
+    #region Public methods
     public void AddItem(string id)
     {
         if (_inventoryItemDatabase == null)
@@ -57,6 +63,7 @@ public class InventoryService : MonoBehaviour
     }
 
     // Returns a copy of the range, including both zero-based indexes.
+
     public List<InventoryItemData> GetTakenItemsFromIndexes(int startIndex, int endIndex)
     {
         if (startIndex < 0 || startIndex >= _takenItems.Count)
@@ -67,5 +74,5 @@ public class InventoryService : MonoBehaviour
 
         return _takenItems.GetRange(startIndex, endIndex - startIndex + 1);
     }
-
+    #endregion
 }

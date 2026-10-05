@@ -6,14 +6,10 @@ using UnityEngine.EventSystems;
 
 public class UIDragAndDropV2 : MonoBehaviour
 {
-    
+    #region Fields
     [SerializeField] private Image _imageToDrag;
     [SerializeField] private Image[] _slots;
     [SerializeField] private bool _allowPassMouseEvents;
-
-    public UnityEvent<GameObject,GameObject> CorrectDrop = new UnityEvent<GameObject,GameObject>();
-    // Reports the dragged item and the matched slot.
-
     private RectTransform _imageRect;
     private RectTransform _dragParent;
     private EventTrigger _eventTrigger;
@@ -24,11 +20,52 @@ public class UIDragAndDropV2 : MonoBehaviour
     private bool _isDragging;
     private int _pointerId;
     private int _originalSiblingIndex;
+    #endregion
 
+    #region public properties
+    public UnityEvent<GameObject,GameObject> CorrectDrop = new UnityEvent<GameObject,GameObject>();
+    #endregion
+
+    #region Unity Callbacks
+    // Reports the dragged item and the matched slot.
+
+    private void Awake()
+    {
+        // Runtime-added components are configured after AddComponent invokes Awake.
+        if (_imageToDrag != null)
+            Initialize();
+    }
+
+    private void Start()
+    {
+        if (_imageRect == null)
+            Initialize();
+    }
+
+    private void OnDisable()
+    {
+        RestoreRaycastTargets();
+        if (!_isDragging || _imageRect == null)
+            return;
+
+        _isDragging = false;
+        _imageRect.SetSiblingIndex(_originalSiblingIndex);
+        _imageRect.localPosition = _originalPosition;
+    }
+
+    private void OnDestroy()
+    {
+        RestoreRaycastTargets();
+        RemoveDragEvents();
+    }
+    #endregion
+
+    #region Public methods
     public void SetImageToDrag(Image imageToDrag)
     {
         Configure(imageToDrag, _slots);
     }
+
     public void SetSlot(Image slot)
     {
         Configure(_imageToDrag, slot);
@@ -49,56 +86,6 @@ public class UIDragAndDropV2 : MonoBehaviour
         _dragParent = null;
         if (_imageToDrag != null)
             Initialize();
-    }
-
-    private void Awake()
-    {
-        // Runtime-added components are configured after AddComponent invokes Awake.
-        if (_imageToDrag != null)
-            Initialize();
-    }
-
-    private void Start()
-    {
-        if (_imageRect == null)
-            Initialize();
-    }
-
-    private void Initialize()
-    {
-        if (_imageToDrag == null)
-        {
-            Debug.LogWarning("Assign the image to drag in the Inspector.", this);
-            enabled = false;
-            return;
-        }
-
-        _imageRect = _imageToDrag.rectTransform;
-        _dragParent = _imageRect.parent as RectTransform;
-        if (_dragParent == null)
-        {
-            Debug.LogWarning("The draggable image must have a RectTransform parent.", this);
-            enabled = false;
-            return;
-        }
-
-        _eventTrigger = _imageToDrag.GetComponent<EventTrigger>();
-        if (_eventTrigger == null)
-            _eventTrigger = _imageToDrag.gameObject.AddComponent<EventTrigger>();
-        _imageToDrag.raycastTarget = true;
-
-        AddDragEvent(EventTriggerType.BeginDrag, OnBeginDrag);
-        AddDragEvent(EventTriggerType.Drag, OnDrag);
-        AddDragEvent(EventTriggerType.EndDrag, OnEndDrag);
-        enabled = true;
-    }
-
-    private void AddDragEvent(EventTriggerType type, UnityAction<PointerEventData> callback)
-    {
-        var entry = new EventTrigger.Entry { eventID = type };
-        entry.callback.AddListener(data => callback((PointerEventData)data));
-        _eventTrigger.triggers.Add(entry);
-        _dragEvents.Add(entry);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -166,9 +153,48 @@ public class UIDragAndDropV2 : MonoBehaviour
 
         }
         else
-        {         
+        {
             _imageRect.localPosition = _originalPosition;
         }
+    }
+    #endregion
+
+    #region Private methods
+    private void Initialize()
+    {
+        if (_imageToDrag == null)
+        {
+            Debug.LogWarning("Assign the image to drag in the Inspector.", this);
+            enabled = false;
+            return;
+        }
+
+        _imageRect = _imageToDrag.rectTransform;
+        _dragParent = _imageRect.parent as RectTransform;
+        if (_dragParent == null)
+        {
+            Debug.LogWarning("The draggable image must have a RectTransform parent.", this);
+            enabled = false;
+            return;
+        }
+
+        _eventTrigger = _imageToDrag.GetComponent<EventTrigger>();
+        if (_eventTrigger == null)
+            _eventTrigger = _imageToDrag.gameObject.AddComponent<EventTrigger>();
+        _imageToDrag.raycastTarget = true;
+
+        AddDragEvent(EventTriggerType.BeginDrag, OnBeginDrag);
+        AddDragEvent(EventTriggerType.Drag, OnDrag);
+        AddDragEvent(EventTriggerType.EndDrag, OnEndDrag);
+        enabled = true;
+    }
+
+    private void AddDragEvent(EventTriggerType type, UnityAction<PointerEventData> callback)
+    {
+        var entry = new EventTrigger.Entry { eventID = type };
+        entry.callback.AddListener(data => callback((PointerEventData)data));
+        _eventTrigger.triggers.Add(entry);
+        _dragEvents.Add(entry);
     }
 
     private Image FindDropSlot(Vector2 position)
@@ -195,23 +221,6 @@ public class UIDragAndDropV2 : MonoBehaviour
         return null;
     }
 
-    private void OnDisable()
-    {
-        RestoreRaycastTargets();
-        if (!_isDragging || _imageRect == null)
-            return;
-
-        _isDragging = false;
-        _imageRect.SetSiblingIndex(_originalSiblingIndex);
-        _imageRect.localPosition = _originalPosition;
-    }
-
-    private void OnDestroy()
-    {
-        RestoreRaycastTargets();
-        RemoveDragEvents();
-    }
-
     private void RestoreRaycastTargets()
     {
         foreach (Graphic graphic in _disabledRaycastTargets)
@@ -232,6 +241,5 @@ public class UIDragAndDropV2 : MonoBehaviour
         _dragEvents.Clear();
         _eventTrigger = null;
     }
-    
-    
+    #endregion
 }

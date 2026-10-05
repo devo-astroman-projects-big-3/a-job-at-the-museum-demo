@@ -3,30 +3,23 @@ using UnityEngine.Events;
 
 public class Objectives : MonoBehaviour
 {
-    public UnityEvent IsTimeToExam = new UnityEvent();
-
+    #region Fields
     [SerializeField] private HudUI _hudUI;
-
     [SerializeField] private TasksCompleteState _screenInfoTasks;
     private int _totalScreenInfo;
     private int _nScreenInfoCompleted;
-
     [SerializeField] private TasksCompleteState _minigamesTasks;
     private int _totalMinigames;
     private int _nMinigamesCompleted;
     private bool _firstTimeTalkToEmmaCompleted;
-
     private bool _timeToExam = false;
+    #endregion
 
-    public void SetInitialSetup(int totalScreenInfo, int nScreenInfoCompleted, int totalMinigames, int nMinigamesCompleted)
-    {
-        _totalScreenInfo = Mathf.Max(0, totalScreenInfo);
-        _nScreenInfoCompleted = Mathf.Clamp(nScreenInfoCompleted, 0, _totalScreenInfo);
-        _totalMinigames = Mathf.Max(0, totalMinigames);
-        _nMinigamesCompleted = Mathf.Clamp(nMinigamesCompleted, 0, _totalMinigames);
-        UpdateObjectives();
-    }
+    #region public properties
+    public UnityEvent IsTimeToExam = new UnityEvent();
+    #endregion
 
+    #region Unity Callbacks
     private void Start()
     {
         SetInitialSetup(
@@ -34,6 +27,17 @@ public class Objectives : MonoBehaviour
             _screenInfoTasks != null ? _screenInfoTasks.NCompletedTasks : _nScreenInfoCompleted,
             _minigamesTasks != null ? _minigamesTasks.NTasks : _totalMinigames,
             _minigamesTasks != null ? _minigamesTasks.NCompletedTasks : _nMinigamesCompleted);
+    }
+    #endregion
+
+    #region Public methods
+    public void SetInitialSetup(int totalScreenInfo, int nScreenInfoCompleted, int totalMinigames, int nMinigamesCompleted)
+    {
+        _totalScreenInfo = Mathf.Max(0, totalScreenInfo);
+        _nScreenInfoCompleted = Mathf.Clamp(nScreenInfoCompleted, 0, _totalScreenInfo);
+        _totalMinigames = Mathf.Max(0, totalMinigames);
+        _nMinigamesCompleted = Mathf.Clamp(nMinigamesCompleted, 0, _totalMinigames);
+        UpdateObjectives();
     }
 
     public void FirstTimeTalkToEmmaCompleted()
@@ -67,7 +71,9 @@ public class Objectives : MonoBehaviour
         _nMinigamesCompleted = _totalMinigames;
         UpdateObjectives();
     }
+    #endregion
 
+    #region Private methods
     private void UpdateObjectives()
     {
         bool wasTimeToExam = _timeToExam;
@@ -131,4 +137,5 @@ public class Objectives : MonoBehaviour
                 _totalMinigames > 0 && _nMinigamesCompleted == _totalMinigames
             });
     }
+    #endregion
 }

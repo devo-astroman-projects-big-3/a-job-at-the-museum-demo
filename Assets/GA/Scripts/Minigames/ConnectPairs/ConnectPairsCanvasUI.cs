@@ -5,28 +5,36 @@ using UnityEngine.Events;
 
 public class ConnectPairsCanvasUI : MonoBehaviour
 {
-    
+    #region Fields
     [SerializeField] private UIDrawLine _uIDrawLine;
-    
     [SerializeField] private PairButton[] _leftGroup;
     [SerializeField] private PairButton[] _rightGroup;
-
     [SerializeField] private GameObject _congrats;
-    public UnityEvent<string> OnComplete;
-
     private readonly HashSet<PairButton> _matchedButtons = new();
     private int _totalPairs;
     private int _correctPairs;
     private bool _completed;
-
     private PairButton _leftSelection;
     private PairButton _rightSelection;
-
     private bool _leftDragging = false;
     private bool _rightDragging = false;
-
     private string _currentRunningId;
+    #endregion
 
+    #region public properties
+    public UnityEvent<string> OnComplete;
+    #endregion
+
+    #region Unity Callbacks
+    private void OnDisable()
+    {
+        if ((_leftDragging || _rightDragging) && _uIDrawLine != null)
+            _uIDrawLine.ClearLine();
+        ResetSelection();
+    }
+    #endregion
+
+    #region Public methods
     public void SetCurrentRunningId(string currentRunningId)
     {
         _currentRunningId = currentRunningId;
@@ -82,38 +90,6 @@ public class ConnectPairsCanvasUI : MonoBehaviour
 
     }
 
-    private void ChangePositionsRandomly(PairButton[] group)
-    {
-        var buttons = new List<PairButton>();
-        foreach (PairButton button in group)
-            if (button != null && button.gameObject.activeSelf)
-                buttons.Add(button);
-
-        for (int i = buttons.Count - 1; i > 0; i--)
-        {
-            int j = Random.Range(0, i + 1);
-            Transform a = buttons[i].transform;
-            Transform b = buttons[j].transform;
-            if (a == b)
-                continue;
-            if (a.parent == b.parent && a.parent != null &&
-                a.parent.TryGetComponent<LayoutGroup>(out var layout) && layout.isActiveAndEnabled)
-            {
-                int aIndex = a.GetSiblingIndex();
-                int bIndex = b.GetSiblingIndex();
-                a.SetSiblingIndex(bIndex);
-                b.SetSiblingIndex(aIndex);
-            }
-            else
-            {
-                Vector3 position = a.position;
-                a.position = b.position;
-                b.position = position;
-            }
-        }
-    }
-
-
     public void OnLeftPointerDown(PairButton pButton)
     {
         ResetSelection();
@@ -168,6 +144,39 @@ public class ConnectPairsCanvasUI : MonoBehaviour
     {
         if (_leftDragging && _rightSelection == pButton)
             _rightSelection = null;
+    }
+    #endregion
+
+    #region Private methods
+    private void ChangePositionsRandomly(PairButton[] group)
+    {
+        var buttons = new List<PairButton>();
+        foreach (PairButton button in group)
+            if (button != null && button.gameObject.activeSelf)
+                buttons.Add(button);
+
+        for (int i = buttons.Count - 1; i > 0; i--)
+        {
+            int j = Random.Range(0, i + 1);
+            Transform a = buttons[i].transform;
+            Transform b = buttons[j].transform;
+            if (a == b)
+                continue;
+            if (a.parent == b.parent && a.parent != null &&
+                a.parent.TryGetComponent<LayoutGroup>(out var layout) && layout.isActiveAndEnabled)
+            {
+                int aIndex = a.GetSiblingIndex();
+                int bIndex = b.GetSiblingIndex();
+                a.SetSiblingIndex(bIndex);
+                b.SetSiblingIndex(aIndex);
+            }
+            else
+            {
+                Vector3 position = a.position;
+                a.position = b.position;
+                b.position = position;
+            }
+        }
     }
 
     private bool IsInGroup(PairButton button, PairButton[] group)
@@ -252,11 +261,5 @@ public class ConnectPairsCanvasUI : MonoBehaviour
         _leftDragging = false;
         _rightDragging = false;
     }
-
-    private void OnDisable()
-    {
-        if ((_leftDragging || _rightDragging) && _uIDrawLine != null)
-            _uIDrawLine.ClearLine();
-        ResetSelection();
-    }
+    #endregion
 }

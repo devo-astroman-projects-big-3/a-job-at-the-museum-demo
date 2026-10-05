@@ -4,11 +4,15 @@ using UnityEngine.Events;
 
 public class TasksCompleteState : MonoBehaviour
 {
+    #region Fields
     [SerializeField] private string _id;
     [SerializeField] private string _description;
     [SerializeField] private TaskId[] _allTasksId;
+    #endregion
 
+    #region public properties
     public UnityEvent<string, int, int> OnCompleted = new UnityEvent<string, int, int>();
+
     public UnityEvent OnAllCompleted = new UnityEvent();
 
     public int NTasks
@@ -44,7 +48,9 @@ public class TasksCompleteState : MonoBehaviour
             return count;
         }
     }
+    #endregion
 
+    #region Public methods
     public void NotifyIsCompleted(string idTask)
     {
         Debug.Log("NotifyIsCompleted " + idTask);
@@ -81,5 +87,5 @@ public class TasksCompleteState : MonoBehaviour
         if (completedCount == totalCount)
             OnAllCompleted?.Invoke();
     }
-
+    #endregion
 }

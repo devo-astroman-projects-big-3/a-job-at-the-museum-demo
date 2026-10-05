@@ -4,19 +4,22 @@ using UnityEngine.EventSystems;
 using TMPro;
 
 public class PairButton : MonoBehaviour
-{    
+{
+    #region Fields
     [SerializeField] private TMP_Text _textLabel;
-    [SerializeField] private Image _imageDisplay;    
-    
+    [SerializeField] private Image _imageDisplay;
     private string _pairId;
     private string _text;
     private Sprite _image;
+    #endregion
 
+    #region public properties
     public string PairId
     {
         get => _pairId;
         set => _pairId = value;
     }
+
     public string Text
     {
         get => _text;
@@ -40,6 +43,5 @@ public class PairButton : MonoBehaviour
                 _imageDisplay.sprite = value;
         }
     }
-
-
+    #endregion
 }

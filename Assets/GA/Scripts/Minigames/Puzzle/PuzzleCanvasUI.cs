@@ -5,26 +5,36 @@ using UnityEngine.UI;
 
 public class PuzzleCanvasUI : MonoBehaviour
 {
+    #region Fields
     [SerializeField] private ImageSlicer _imageSlicerDragItems;
     [SerializeField] private ImageSlicer _imageSlicerSlots;
     [SerializeField] private PieceDragger _pieceDragger;
     [SerializeField] private GameObject _congratsMsg;
     [SerializeField] private Image _imageItemsDraggable;
     [SerializeField] private Image _imageSlot;
-
-    public UnityEvent<string> PuzzleCompletedUnityEvent;
     private readonly List<UIDragAndDrop> _registeredPieces = new();
     private readonly HashSet<GameObject> _remainingPieces = new();
     private int _correctCount;
     private int _totalPieces;
-
     private string _currentRunningId;
+    #endregion
 
+    #region public properties
+    public UnityEvent<string> PuzzleCompletedUnityEvent;
+    #endregion
+
+    #region Unity Callbacks
+    private void OnDestroy()
+    {
+        RemovePieceListeners();
+    }
+    #endregion
+
+    #region Public methods
     public void SetCurrentRunningId(string currentRunningId)
     {
         _currentRunningId = currentRunningId;
     }
-
 
     public void Setup(Sprite imageToSlice, int nSlices)
     {
@@ -88,7 +98,9 @@ public class PuzzleCanvasUI : MonoBehaviour
         _totalPieces = _remainingPieces.Count;
         RandomizeDraggableItemsPositions();
     }
+    #endregion
 
+    #region Private methods
     private void RandomizeDraggableItemsPositions()
     {
         if (_imageSlicerDragItems == null)
@@ -138,9 +150,5 @@ public class PuzzleCanvasUI : MonoBehaviour
         }
         _registeredPieces.Clear();
     }
-
-    private void OnDestroy()
-    {
-        RemovePieceListeners();
-    }
+    #endregion
 }

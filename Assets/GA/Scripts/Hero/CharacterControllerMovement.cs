@@ -3,14 +3,16 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class CharacterControllerMovement : MonoBehaviour
 {
+    #region Fields
     [SerializeField] private float _speed = 5f;
     [SerializeField] private float _gravity = -20f;
     [SerializeField] private Animator _animator;
     [SerializeField] private SpriteRenderer _spriteRenderer;
-
     private CharacterController _controller;
     private float _verticalVelocity;
+    #endregion
 
+    #region Unity Callbacks
     private void Awake()
     {
         _controller = GetComponent<CharacterController>();
@@ -78,4 +80,5 @@ public class CharacterControllerMovement : MonoBehaviour
         if (_animator != null)
             _animator.SetBool("isRunning", isRunning);
     }
+    #endregion
 }

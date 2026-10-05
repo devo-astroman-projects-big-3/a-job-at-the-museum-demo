@@ -3,13 +3,19 @@ using UnityEngine.UI;
 
 public class InventorySlotUI : MonoBehaviour
 {
+    #region Fields
     [SerializeField] private string _id;
     [SerializeField] private Sprite _slotIcon;
     [SerializeField] private Image _iconImage;
+    #endregion
 
+    #region public properties
     public string Id => _id;
-    public Sprite SlotIcon => _slotIcon;
 
+    public Sprite SlotIcon => _slotIcon;
+    #endregion
+
+    #region Public methods
     public void SetItem(InventoryItemData item)
     {
         _id = item != null ? item.Id : null;
@@ -24,5 +30,5 @@ public class InventorySlotUI : MonoBehaviour
             _iconImage.enabled = _slotIcon != null;
         }
     }
-
+    #endregion
 }

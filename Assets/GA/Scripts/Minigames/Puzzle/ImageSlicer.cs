@@ -4,15 +4,32 @@ using UnityEngine.UI;
 
 public class ImageSlicer : MonoBehaviour
 {
+    #region Fields
     [SerializeField] private Image _imageToSlice;
     [SerializeField] private Image[] _pieces;
     private readonly List<Sprite> _generatedSprites = new();
     private readonly List<Image> _generatedImages = new();
+    #endregion
 
+    #region Unity Callbacks
+    private void OnDestroy()
+    {
+        ClearGeneratedSprites();
+        foreach (Image image in _generatedImages)
+        {
+            if (image != null)
+                Destroy(image.gameObject);
+        }
+        _generatedImages.Clear();
+    }
+    #endregion
+
+    #region Public methods
     public List<Image> GetGeneratedImages()
     {
         return _generatedImages;
     }
+
     public void SliceImage(int rows, int columns)
     {
         if (rows <= 0 || columns <= 0 || (long)rows * columns > int.MaxValue)
@@ -113,7 +130,9 @@ public class ImageSlicer : MonoBehaviour
                 _pieces[i].gameObject.SetActive(false);
         }
     }
+    #endregion
 
+    #region Private methods
     private void ClearGeneratedSprites()
     {
         foreach (Sprite sprite in _generatedSprites)
@@ -123,17 +142,5 @@ public class ImageSlicer : MonoBehaviour
         }
         _generatedSprites.Clear();
     }
-
-    private void OnDestroy()
-    {
-        ClearGeneratedSprites();
-        foreach (Image image in _generatedImages)
-        {
-            if (image != null)
-                Destroy(image.gameObject);
-        }
-        _generatedImages.Clear();
-    }
-
-
+    #endregion
 }

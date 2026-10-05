@@ -3,14 +3,13 @@ using UnityEngine.UI;
 
 public class ConnectPairs : MonoBehaviour
 {
-    
+    #region Fields
     [SerializeField] private PairConnectMinigameDatabase _pairConnectMinigameDatabase;
     [SerializeField] private ConnectPairsCanvasUI _connectPairsCanvasUI;
     [SerializeField] private GameObject _connectPairsCanvasGO;
+    #endregion
 
-    
-
-
+    #region Public methods
     public void InitConnectPairsMiniGame(string id)
     {
 
@@ -28,5 +27,5 @@ public class ConnectPairs : MonoBehaviour
     {
         _connectPairsCanvasGO.SetActive(false);
     }
-
+    #endregion
 }

@@ -5,8 +5,12 @@ using Yarn.Unity;
 
 public class ExamTester : MonoBehaviour
 {
+    #region Fields
     [SerializeField] private Exam _exam;
     [SerializeField] private bool _test;
+    #endregion
+
+    #region Unity Callbacks
     private void Update()
     {
         if (_test)
@@ -17,7 +21,9 @@ public class ExamTester : MonoBehaviour
 
 
     }
+    #endregion
 
+    #region Public methods
     public void Passed()
     {
         Debug.Log("Passed!!!");
@@ -27,4 +33,5 @@ public class ExamTester : MonoBehaviour
     {
         Debug.Log("Fail!!!");
     }
+    #endregion
 }

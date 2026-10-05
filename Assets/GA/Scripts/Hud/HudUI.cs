@@ -4,9 +4,11 @@ using System.Text;
 
 public class HudUI : MonoBehaviour
 {
-    
+    #region Fields
     [SerializeField] private TMP_Text _objectiveList;
-    
+    #endregion
+
+    #region Public methods
     public void SetObjectiveList(string[] objectives, bool[] completionState)
     {
         if (_objectiveList == null)
@@ -34,5 +36,5 @@ public class HudUI : MonoBehaviour
 
         _objectiveList.text = text.ToString();
     }
-
+    #endregion
 }

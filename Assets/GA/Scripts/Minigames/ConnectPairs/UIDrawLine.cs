@@ -8,14 +8,12 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(RectTransform))]
 public class UIDrawLine : MonoBehaviour
 {
+    #region Fields
     [SerializeField] private Color lineColor = Color.white;
     [SerializeField, Min(1f)] private float thickness = 5f;
-
     [SerializeField] private Button testButtonA;
     [SerializeField] private Button testButtonB;
     [SerializeField] private bool showTestLine = true;
-    
-
     private RectTransform container;
     private RectTransform lineRect;
     private Image lineImage;
@@ -25,7 +23,9 @@ public class UIDrawLine : MonoBehaviour
     private Vector2 startPoint;
     private Vector2 endPoint;
     private readonly List<GameObject> keptLines = new();
+    #endregion
 
+    #region Unity Callbacks
     private void Awake()
     {
         container = GetComponent<RectTransform>();
@@ -70,33 +70,6 @@ public class UIDrawLine : MonoBehaviour
         lineImage.enabled = false;
     }
 
-    public void DrawTestLine()
-    {
-        if (container == null || lineImage == null || testButtonA == null || testButtonB == null)
-            return;
-
-        RectTransform rectA = testButtonA.GetComponent<RectTransform>();
-        RectTransform rectB = testButtonB.GetComponent<RectTransform>();
-        Vector2 start = container.InverseTransformPoint(rectA.TransformPoint(rectA.rect.center));
-        Vector2 end = container.InverseTransformPoint(rectB.TransformPoint(rectB.rect.center));
-        DrawLine(start, end);
-    }
-
-    private void DrawLine(Vector2 start, Vector2 end)
-    {
-        Vector2 direction = end - start;
-        lineImage.enabled = direction.sqrMagnitude > 0f;
-
-        lineRect.localPosition = new Vector3(start.x, start.y, 0f);
-        lineRect.sizeDelta = new Vector2(direction.magnitude, Mathf.Max(1f, thickness));
-
-        float angle = Mathf.Atan2(direction.y, direction.x)
-                      * Mathf.Rad2Deg;
-
-        lineRect.localRotation = Quaternion.Euler(0f, 0f, angle);
-        lineImage.color = lineColor;
-    }
-
     private void OnEnable()
     {
         if (lineImage != null)
@@ -115,6 +88,20 @@ public class UIDrawLine : MonoBehaviour
         ClearAllLines();
         if (lineRect != null)
             Destroy(lineRect.gameObject);
+    }
+    #endregion
+
+    #region Public methods
+    public void DrawTestLine()
+    {
+        if (container == null || lineImage == null || testButtonA == null || testButtonB == null)
+            return;
+
+        RectTransform rectA = testButtonA.GetComponent<RectTransform>();
+        RectTransform rectB = testButtonB.GetComponent<RectTransform>();
+        Vector2 start = container.InverseTransformPoint(rectA.TransformPoint(rectA.rect.center));
+        Vector2 end = container.InverseTransformPoint(rectB.TransformPoint(rectB.rect.center));
+        DrawLine(start, end);
     }
 
     public void OnMousePointDown()
@@ -179,6 +166,23 @@ public class UIDrawLine : MonoBehaviour
         if (lineImage != null)
             lineImage.enabled = false;
     }
+    #endregion
+
+    #region Private methods
+    private void DrawLine(Vector2 start, Vector2 end)
+    {
+        Vector2 direction = end - start;
+        lineImage.enabled = direction.sqrMagnitude > 0f;
+
+        lineRect.localPosition = new Vector3(start.x, start.y, 0f);
+        lineRect.sizeDelta = new Vector2(direction.magnitude, Mathf.Max(1f, thickness));
+
+        float angle = Mathf.Atan2(direction.y, direction.x)
+                      * Mathf.Rad2Deg;
+
+        lineRect.localRotation = Quaternion.Euler(0f, 0f, angle);
+        lineImage.color = lineColor;
+    }
 
     private bool TryGetMousePoint(out Vector2 localPoint)
     {
@@ -203,6 +207,5 @@ public class UIDrawLine : MonoBehaviour
         return RectTransformUtility.ScreenPointToLocalPointInRectangle(
             container, screenPoint, uiCamera, out localPoint);
     }
-
-
+    #endregion
 }

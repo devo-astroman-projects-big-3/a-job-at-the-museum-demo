@@ -3,23 +3,28 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(RectTransform))]
 public class DrawLineCanvasUI : MonoBehaviour
-{    
+{
+    #region Fields
     [SerializeField] private Color lineColor = Color.white;
     [SerializeField, Min(1f)] private float thickness = 5f;
-
     private RectTransform container;
     private RectTransform line;
     private Canvas canvas;
     private Vector2 startPoint;
     private bool hasStartPoint;
+    #endregion
 
+    #region Unity Callbacks
     private void Awake()
     {
         container = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
     }
+    #endregion
 
+    #region Public methods
     // startPosition must be in screen coordinates.
+
     public void StartDrawLine(Vector2 startPosition)
     {
         hasStartPoint = false;
@@ -57,6 +62,7 @@ public class DrawLineCanvasUI : MonoBehaviour
 
     // endPosition must be in screen coordinates.
     // You can call this repeatedly to preview the line while dragging.
+
     public void EndDrawLine(Vector2 endPosition)
     {
         if (!hasStartPoint || line == null)
@@ -86,7 +92,9 @@ public class DrawLineCanvasUI : MonoBehaviour
             line = null;
         }
     }
+    #endregion
 
+    #region Private methods
     private bool TryGetLocalPoint(
         Vector2 screenPosition,
         out Vector2 localPosition)
@@ -113,6 +121,5 @@ public class DrawLineCanvasUI : MonoBehaviour
             out localPosition
         );
     }
-
-
+    #endregion
 }

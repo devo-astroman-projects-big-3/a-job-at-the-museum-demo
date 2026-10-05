@@ -6,28 +6,15 @@ using UnityEngine.EventSystems;
 
 public class SlotGroups : MonoBehaviour
 {
+    #region Fields
+   [SerializeField] private Image[] _slotImages;
+    #endregion
 
+    #region public properties
+   public UnityEvent<int> CorrectDropItem;
+    #endregion
 
-   [SerializeField] private Image[] _slotImages;   
-
-   public UnityEvent<int> CorrectDropItem;   
-
-   public void CorrectDrop(int index)
-   {
-      Debug.Log("_-CorrectDrop-_" + index);
-      _slotImages[index].gameObject.SetActive(true);
-      CorrectDropItem?.Invoke(index);
-   }
-
-   public void SetImages(Sprite[] spriteImgs)
-   {
-      for (int i = 0; i < _slotImages.Length; i++)
-      {
-         _slotImages[i].sprite = i < spriteImgs.Length ? spriteImgs[i] : null;
-         _slotImages[i].gameObject.SetActive(false);
-      }
-   }
-
+    #region Public methods
    public bool CanSetImages(Sprite[] sprites, string groupName = "SlotGroups")
    {
       string prefix = $"{groupName} on '{name}': _slotImages";
@@ -54,5 +41,20 @@ public class SlotGroups : MonoBehaviour
       return valid;
    }
 
+   public void CorrectDrop(int index)
+   {
+      Debug.Log("_-CorrectDrop-_" + index);
+      _slotImages[index].gameObject.SetActive(true);
+      CorrectDropItem?.Invoke(index);
+   }
 
+   public void SetImages(Sprite[] spriteImgs)
+   {
+      for (int i = 0; i < _slotImages.Length; i++)
+      {
+         _slotImages[i].sprite = i < spriteImgs.Length ? spriteImgs[i] : null;
+         _slotImages[i].gameObject.SetActive(false);
+      }
+   }
+    #endregion
 }

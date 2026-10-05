@@ -5,27 +5,26 @@ using UnityEngine.Events;
 
 public class CategorizeCanvasUI : MonoBehaviour
 {
-
+    #region Fields
     [SerializeField] private SlotGroups _slotGroupLeft;
     [SerializeField] private SlotGroups _slotGroupRight;
     [SerializeField] private DraggableItems _draggableItems;
-
     [SerializeField] private GameObject _completeMsgGO;
-
     [SerializeField] private TMP_Text _categoryNameLeft;
     [SerializeField] private TMP_Text _categoryNameRight;
-    
-
-    public UnityEvent<string> OnComplete;
-
     private readonly HashSet<int> _placedLeft = new();
     private readonly HashSet<int> _placedRight = new();
     private int _leftCount;
     private int _rightCount;
     private bool _completed;
-
     private string _currentRunningId;
+    #endregion
 
+    #region public properties
+    public UnityEvent<string> OnComplete;
+    #endregion
+
+    #region Public methods
     public void SetCurrentRunningId(string currentRunningId)
     {
         _currentRunningId = currentRunningId;
@@ -37,7 +36,7 @@ public class CategorizeCanvasUI : MonoBehaviour
         Debug.Log("categoryTwo.CategoryName " + nameRight);
 
         _categoryNameLeft.text = nameLeft;
-        _categoryNameRight.text = nameRight;   
+        _categoryNameRight.text = nameRight;
     }
 
     public void SetValues(CategoryData categoryOne,CategoryData categoryTwo)
@@ -46,8 +45,6 @@ public class CategorizeCanvasUI : MonoBehaviour
             categoryTwo != null ? categoryTwo.Images : null);
     }
 
-
-
     public void RandomizePositions()
     {
         _draggableItems.RandomizePositions();
@@ -55,7 +52,7 @@ public class CategorizeCanvasUI : MonoBehaviour
 
     public void HideCongratsMsg()
     {
-        _completeMsgGO.SetActive(false);   
+        _completeMsgGO.SetActive(false);
     }
 
     public void SetValues(Sprite[] leftImages, Sprite[] rightImages)
@@ -110,7 +107,9 @@ public class CategorizeCanvasUI : MonoBehaviour
         _draggableItems.HideRightItem(index);
         CheckAllCorrects();
     }
+    #endregion
 
+    #region Private methods
     private void CheckAllCorrects()
     {
         if (_completed || _leftCount + _rightCount == 0 ||
@@ -122,6 +121,5 @@ public class CategorizeCanvasUI : MonoBehaviour
         _completed = true;
         OnComplete?.Invoke(_currentRunningId);
     }
-    
-    
+    #endregion
 }
