@@ -726,12 +726,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6371d8d458a1b174bbc803f17883643b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Objectives
-  IsTimeToExam:
-    m_PersistentCalls:
-      m_Calls: []
   _hudUI: {fileID: 0}
   _screenInfoTasks: {fileID: 1635661843}
   _minigamesTasks: {fileID: 1864959097}
+  IsTimeToExam:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &154210862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4192,6 +4192,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c16ef9b1f13112441a8bcfdcc5c856ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Exam
+  _dialogueRunner: {fileID: 573158266}
+  _questionsDatabase: {fileID: 11400000, guid: 17939ce22472cf0429c97c5f81baa2a2, type: 2}
+  _nQuestions: 3
   ExamPassed:
     m_PersistentCalls:
       m_Calls:
@@ -4222,9 +4225,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _dialogueRunner: {fileID: 573158266}
-  _questionsDatabase: {fileID: 11400000, guid: 17939ce22472cf0429c97c5f81baa2a2, type: 2}
-  _nQuestions: 3
 --- !u!114 &2002898661
 MonoBehaviour:
   m_ObjectHideFlags: 0

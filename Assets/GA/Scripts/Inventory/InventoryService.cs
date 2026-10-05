@@ -27,6 +27,17 @@ public class InventoryService : MonoBehaviour
     #endregion
 
     #region Public methods
+    public void PrintItem()
+    {
+        Debug.Log($"Taken items ({_takenItems.Count}):", this);
+
+        for (int i = 0; i < _takenItems.Count; i++)
+        {
+            InventoryItemData item = _takenItems[i];
+            Debug.Log($"[{i}] {(item != null ? item.Id : "null")}", this);
+        }
+    }
+
     public void AddItem(string id)
     {
         if (_inventoryItemDatabase == null)
@@ -39,7 +50,6 @@ public class InventoryService : MonoBehaviour
         if (item != null)
         {
             _takenItems.Add(item);
-            Debug.Log("Added_ " + item.Id);
             OnAddedItem?.Invoke(item.Id);
         }
     }

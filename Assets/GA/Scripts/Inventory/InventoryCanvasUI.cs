@@ -68,7 +68,6 @@ public class InventoryCanvasUI : MonoBehaviour
             return;
 
         _inventoryService.RemoveItem(id);
-        Debug.Log("FLAG " + id);
         RefreshSlots();
     }
 

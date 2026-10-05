@@ -18,18 +18,12 @@ public class Dialoguer : MonoBehaviour
     [SerializeField] private MouseCursorUtil _mouseCursorUtil;
 
     [SerializeField] private GlobalServices _globalServices;
-    /* [SerializeField] private Transform _playerPosition; */
-    /* [SerializeField] private Transform _npcPosition; */
     #endregion
 
     #region Public methods
     public void PlayerAskToTalk()
     {   
         HandlePlayerMovedAndLookingAtPlace();
-        //_globalServices.MoveAndLookPlayerTo(_playerPosition,_npcPosition);
-
-        //_globalServices.PlayerMovedAndLookingAtPlace += HandlePlayerMovedAndLookingAtPlace;
-        
     }
 
     public void TalkingFinished()
@@ -38,8 +32,6 @@ public class Dialoguer : MonoBehaviour
         _proximityPrompt.gameObject.SetActive(true);
         _mouseCursorUtil.HideCursor();
 
-         //_globalServices.DisableNavAgent();
-         Debug.Log("dialoguer " + this.gameObject.name);
          _globalServices.EnablePlayerThirdPerson();
         
     }
@@ -52,10 +44,8 @@ public class Dialoguer : MonoBehaviour
         _globalServices.DisablePlayerThirdPerson();
         _proximityPrompt.gameObject.SetActive(false);
         _dialogueRunnerHolder.GetComponent<DialogueRunner>().StartDialogue(_startNode);
-        Debug.Log("_ShowCursor_");
         _mouseCursorUtil.ShowCursor();
 
-        //_globalServices.PlayerMovedAndLookingAtPlace -= HandlePlayerMovedAndLookingAtPlace;
     }
     #endregion
 }
