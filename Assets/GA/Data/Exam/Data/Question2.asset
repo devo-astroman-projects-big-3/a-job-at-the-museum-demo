@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Question2
   m_EditorClassIdentifier: Assembly-CSharp::Question
   _id: q02
-  _question: "\xBFCapital of Venezuela?"
-  _choiceA: Caracas
-  _choiceB: San Luis
-  _choiceC: "Bogot\xE1"
-  _choiceD: Buenos Aires
+  _question: How long was Edison in regular school?
+  _choiceA: Only 3 months.
+  _choiceB: 5 years.
+  _choiceC: All the years.
+  _choiceD: 3 years.
   _correctChoiceLetter: 97

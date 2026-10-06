@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Question5
   m_EditorClassIdentifier: Assembly-CSharp::Question
   _id: q05
-  _question: number 10
-  _choiceA: two
-  _choiceB: three
-  _choiceC: four
-  _choiceD: ten
+  _question: What was his first job at age 12?
+  _choiceA: Selling in a bakery
+  _choiceB: Painting walls
+  _choiceC: Cleaning floors at school
+  _choiceD: Selling newspapers and candy on trains.
   _correctChoiceLetter: 100

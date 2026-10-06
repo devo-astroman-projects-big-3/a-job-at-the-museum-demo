@@ -7,6 +7,7 @@ public class SceneChanger : MonoBehaviour
     [SerializeField] private string _gameplay;
 
     [SerializeField] private string _outro;
+    [SerializeField] private string _intro;
     #endregion
 
     #region Public methods
@@ -18,6 +19,11 @@ public class SceneChanger : MonoBehaviour
     public void GoOutro()
     {
         ChangeScene(_outro);
+    }
+
+    public void GoIntro()
+    {
+        ChangeScene(_intro);
     }
     #endregion
 

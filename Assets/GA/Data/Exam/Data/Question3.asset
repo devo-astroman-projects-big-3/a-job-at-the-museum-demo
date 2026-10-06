@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Question3
   m_EditorClassIdentifier: Assembly-CSharp::Question
   _id: q03
-  _question: "\xBF3*3?"
-  _choiceA: 6
-  _choiceB: 9
-  _choiceC: 5
-  _choiceD: 0
+  _question: Who homeschooled him after he left school?
+  _choiceA: Himself as autodidacta
+  _choiceB: His mother, who was a former teacher.
+  _choiceC: His father
+  _choiceD: A friend of the family
   _correctChoiceLetter: 98

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Question8
   m_EditorClassIdentifier: Assembly-CSharp::Question
   _id: q08
-  _question: "\xBFhow many eyes has a cyclop?"
-  _choiceA: 1
-  _choiceB: 8
-  _choiceC: 5
-  _choiceD: 3
+  _question: What was Menlo Park?
+  _choiceA: The first R&D lab
+  _choiceB: A university
+  _choiceC: A train factory
+  _choiceD: A library
   _correctChoiceLetter: 97

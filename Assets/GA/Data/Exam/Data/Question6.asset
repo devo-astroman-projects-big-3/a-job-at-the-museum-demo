@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Question6
   m_EditorClassIdentifier: Assembly-CSharp::Question
   _id: q06
-  _question: translate into spanish "blue"
-  _choiceA: rojo
-  _choiceB: azul
-  _choiceC: "p\xFArpura"
-  _choiceD: cielo
+  _question: What did he create in a train car at age 15?
+  _choiceA: His own book.
+  _choiceB: His own newspaper.
+  _choiceC: His own design company.
+  _choiceD: His own clothing store.
   _correctChoiceLetter: 98

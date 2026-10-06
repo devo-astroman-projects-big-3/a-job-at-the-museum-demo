@@ -23,31 +23,27 @@
 
 title: FirstAsk
 ---
-MuseumDirector: Welcome to the Museum.
-MuseumDirector: How can I help you?
-Fred: I'm Fred Donnitoly, and I'm here for the job
-MuseumDirector: Do you really want to work here?
-Fred: yeah I'm very enthusiastic.
-MuseumDirector: ok, do you like the history?
-Fred: Uhm sure.
-Fred: I don't LIKE the history. I LOVE the history.
-MuseumDirector: that sounds good.
-MuseumDirector: Mr. Donnitoly. Do you know in what year stated the first world war?
-Fred: ehh
+Museum Director: Welcome to the Thomas Edison Museum. How can I help you?
+Fred: I'm Fred Donnitoly, and I'm here for the job.
+Museum Director: Do you really want to work here?
+Fred: Yeah, I'm very enthusiastic.
+Museum Director: Okay, do you like the history of Thomas Edison?
+Fred: Uhm, sure. I don't LIKE his history...
+Fred: I LOVE anything related to Thomas Edison!
+Museum Director: Sounds good. Mr. Donnitoly, in what year was Thomas Edison born?
+Fred: Ehh...
 -> 1985
--> 1200
--> I know it, it just that I dont want to say it.
-MuseumDirector: what I though, you know nothing about history. 
-MuseumDirector: Sorry Mr Donnitoly I can't give you the job.
+-> Can I use the "Call a Friend" lifeline?
+-> I know it, I just don't want to say it.
+MuseumDirector: That's what I thought — you know nothing about Thomas Edison.
+MuseumDirector: Sorry, Mr. Donnitoly, I can't give you the job.
 <<jump SorryAdvancedQuestions>>
 ===
 
 title: SorryAdvancedQuestions
 ---
 Fred: Can we try the questions again?
-MuseumDirector: My questions are too advanced for you. And excuse me I'm very busy right now.
-Fred: Ok, bye
-MuseumDirector: bye.
+MuseumDirector: My questions are too advanced for you. Excuse me, I'm very busy right now.
 ===
 
 
@@ -58,9 +54,9 @@ title: ExamAsk
 <<set $currentQuestion to 0>>
 <<set $nCorrects to 0>>
 <<set $selection to 0>>
-MuseumDirector: Ok, so you think you are ready
+MuseumDirector: Okay, so you think you're ready?
 Fred: I was born ready.
-MuseumDirector: Lets start
+MuseumDirector: Let's start.
 <<jump NextQuestion>>
 ===
 
@@ -111,8 +107,6 @@ title: Fail
 <<set $passExam to false>>
 MuseumDirector: You fail.
 MuseumDirector: You got only {$nCorrects} of {$totalQuestions}
-
-Fred: Thanks
 ===
 
 
@@ -121,6 +115,6 @@ title: Congrats
 ---
 <<set $passExam to true>>
 MuseumDirector: All corrects.
-MuseumDirector: All corrects, congratulation Mr Fred the job is yours
+MuseumDirector: All corrects, congratulation Mr Donnitoly the job is yours
 Fred: Wonderful!
 ===

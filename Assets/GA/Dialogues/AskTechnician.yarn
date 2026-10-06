@@ -14,7 +14,7 @@ Fred: Hello, may I ask you something...
 
 title: Angry
 ---
-Technician: Allways people want me to help them!
+Technician: Ugh, people ALWAYS want me to help them!
 Technician: Not anymore!
 ===
 
@@ -23,7 +23,7 @@ Technician: Not anymore!
 title: QuestionsHappy
 ---
 Technician: Sure! what can I do for you?
--> Nothing really.
+-> Nothing, really.
     <<jump ByeHappy>>
 -> Can you help me open a drain? <<if $lookedDrain == true and $receivedCrowbar == false>>
     <<jump Drain>>
@@ -31,11 +31,11 @@ Technician: Sure! what can I do for you?
 
 title: QuestionsAngry
 ---
--> Nothing really.
+-> Nothing, really.
     <<jump ByeAngry>>
 -> Can you help me open a drain? <<if $lookedDrain == true and $receivedCrowbar == false>>
     <<jump Angry>>
--> You look thirsty, do you want a cold coke? <<if $hasCokeCan == true>>
+-> You look thirsty, do you want a cold Coke? <<if $hasCokeCan == true>>
     <<jump GiveCoke>>
 ===
 
@@ -54,8 +54,7 @@ Technician: Bye, let me know if you need something
 title: Drain
 ---
 Technician: I can give you this crowbar.
-Fred: Thanks, that can help
-Fred: Bye
+Fred: Thanks, that could help. Bye!
 <<set $receivedCrowbar to true>>
 <<jump ByeHappy>>
 ===
@@ -66,5 +65,5 @@ Technician: Hey thanks.
 <<set $hasCokeCan to false>>
 <<set $isHappy to true>>
 Fred: you are welcome.
-Technician: I'll continue with my work but if you need something let me know. Bye.
+Technician: You're welcome. I'll continue with my work, but if you need anything, let me know. Bye!
 ===

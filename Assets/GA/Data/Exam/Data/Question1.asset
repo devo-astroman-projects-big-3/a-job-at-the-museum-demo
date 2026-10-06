@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Question1
   m_EditorClassIdentifier: Assembly-CSharp::Question
   _id: q01
-  _question: "\xBF2+2 is ?"
-  _choiceA: 5
-  _choiceB: 6
-  _choiceC: 2
-  _choiceD: 4
+  _question: When was Edison born?
+  _choiceA: July 21, 1747
+  _choiceB: December 12, 1840
+  _choiceC: June 11, 1900
+  _choiceD: February 11, 1847
   _correctChoiceLetter: 100

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Question7
   m_EditorClassIdentifier: Assembly-CSharp::Question
   _id: q07
-  _question: "\xBFhow many feet has a spider?"
-  _choiceA: 1
-  _choiceB: 8
-  _choiceC: 5
-  _choiceD: 3
+  _question: What skill got him his first real jobs?
+  _choiceA: Plumbing
+  _choiceB: Morse code
+  _choiceC: Carpentry
+  _choiceD: Baking
   _correctChoiceLetter: 98
