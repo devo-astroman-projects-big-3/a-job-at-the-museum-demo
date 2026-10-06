@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13da7c99cb8927a468dff78fbcdce550, type: 3}
-  m_Name: 03Page_01-FWWAR
+  m_Name: 02Page_01-ThomasEdisonContributions
   m_EditorClassIdentifier: Assembly-CSharp::ScreenInfoPageData
-  _id: 03Page_01-FWWAR
-  _middleImage: {fileID: 758654785, guid: 0504acf6eeb88074b88cd72d9328c42b, type: 3}
-  _descriptionTitle: page 3 Description Title
-  _description: page 3 This is the description for the bla bla bla bla
+  _id: 02Page_01-ThomasEdisonContributions
+  _middleImage: {fileID: 21300000, guid: 290bdaacee8964843bb3bfd1bebc36ae, type: 3}
+  _descriptionTitle: The Phonograph (1877)
+  _description: The first machine to record and reproduce sound. It started the entire
+    music and audio industry.

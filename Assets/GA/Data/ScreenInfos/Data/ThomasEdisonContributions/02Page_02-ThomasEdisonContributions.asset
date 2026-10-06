@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13da7c99cb8927a468dff78fbcdce550, type: 3}
-  m_Name: 01Page_01-FWWAR
+  m_Name: 02Page_02-ThomasEdisonContributions
   m_EditorClassIdentifier: Assembly-CSharp::ScreenInfoPageData
-  _id: 01Page_01-FWWAR
-  _middleImage: {fileID: 21300000, guid: 9f90f0812a5fb1c4993f62e0b5757aff, type: 3}
-  _descriptionTitle: Description Title page
-  _description: This is the description for the bla bla bla bla
+  _id: 02Page_02-ThomasEdisonContributions
+  _middleImage: {fileID: 21300000, guid: d5102f1a0d472fe42bd9c7acffd53804, type: 3}
+  _descriptionTitle: The practical Light Bulb + Electric Grid (1879-1882)
+  _description: "He made the bulb last 1,200 hours and invented everything around
+    it \u2014 cables, meters, power plants. He brought light to cities."

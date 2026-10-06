@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 864e6c49c07cc1242a97776a2034b24d, type: 3}
-  m_Name: Presentation01-FWWAR
+  m_Name: Presentation01-ThomasEdisonLife
   m_EditorClassIdentifier: Assembly-CSharp::ScreenInfoData
-  _id: 01-FWWAR
-  _topTitle: TopTitle
-  _mainTitle: Main title
-  _subTitle: Sub title
+  _id: 01-ThomasEdisonLife
+  _topTitle: The life of
+  _mainTitle: Thomas Alva Edison
+  _subTitle: 1847-1931
   _screenInfoPageData:
   - {fileID: 11400000, guid: d467a838e4506f74fb8bcc8efdb8a840, type: 2}
   - {fileID: 11400000, guid: 43426f0871e520c4a96ce5459f1a8dc0, type: 2}
   - {fileID: 11400000, guid: 470d8cbf8e3eae94f9cd2e84fd4e66a8, type: 2}
+  - {fileID: 11400000, guid: a7040a22247cfa84481b5681838f1ba4, type: 2}

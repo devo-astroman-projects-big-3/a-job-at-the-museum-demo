@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13da7c99cb8927a468dff78fbcdce550, type: 3}
-  m_Name: 02Page_01-FWWAR
+  m_Name: 02Page_03-ThomasEdisonContributions
   m_EditorClassIdentifier: Assembly-CSharp::ScreenInfoPageData
-  _id: 02Page_01-FWWAR
-  _middleImage: {fileID: 21300000, guid: 2dc860b0fb8777e4dafc680c212cbdff, type: 3}
-  _descriptionTitle: page 2 Description Title
-  _description: page 2 This is the description for the bla bla bla bla
+  _id: 02Page_03-ThomasEdisonContributions
+  _middleImage: {fileID: 21300000, guid: 4698365b78dc92b488cd26d22d706685, type: 3}
+  _descriptionTitle: The Invention Lab (Menlo Park)
+  _description: He created the first R&D lab ever. The idea of a team of people inventing
+    together, not just one lone genius, is his invention too.

@@ -28921,7 +28921,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -676.3823, y: 0, z: -687.02734, w: -77.706085}
+  m_margin: {x: -676.3823, y: 18.65979, z: -687.02734, w: -57.857986}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -33193,7 +33193,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 38910315783919627, guid: 53a95f35c3ac6a441a54d4569b577b27, type: 3}
       propertyPath: m_Name
-      value: ScreenInfo - InfoWar
+      value: ScreenInfo - ThomasEdisonLife
       objectReference: {fileID: 0}
     - target: {fileID: 601672806896334202, guid: 53a95f35c3ac6a441a54d4569b577b27, type: 3}
       propertyPath: m_Enabled
@@ -33341,7 +33341,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4751264260949543554, guid: 53a95f35c3ac6a441a54d4569b577b27, type: 3}
       propertyPath: Interacted.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: 01-FWWAR
+      value: 01-ThomasEdisonLife
       objectReference: {fileID: 0}
     - target: {fileID: 4751264260949543554, guid: 53a95f35c3ac6a441a54d4569b577b27, type: 3}
       propertyPath: Interacted.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -39316,7 +39316,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -262.6}
+  m_AnchoredPosition: {x: 0, y: -270}
   m_SizeDelta: {x: 753, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2036117870
@@ -39366,10 +39366,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 62.2
+  m_fontSize: 72
   m_fontSizeBase: 62.2
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -39405,7 +39405,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -536.6757, y: 0, z: -536.1144, w: -35.983154}
+  m_margin: {x: -258.57312, y: 0, z: -275.77185, w: -35.983154}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -39533,7 +39533,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 38910315783919627, guid: 53a95f35c3ac6a441a54d4569b577b27, type: 3}
       propertyPath: m_Name
-      value: ScreenInfo - InfoWar (1)
+      value: ScreenInfo - ThomasEdisonContributions
       objectReference: {fileID: 0}
     - target: {fileID: 601672806896334202, guid: 53a95f35c3ac6a441a54d4569b577b27, type: 3}
       propertyPath: m_Enabled
@@ -39681,7 +39681,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4751264260949543554, guid: 53a95f35c3ac6a441a54d4569b577b27, type: 3}
       propertyPath: Interacted.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: 02-FWWAR Causes
+      value: Presentation02-ThomasEdisonContributions
       objectReference: {fileID: 0}
     - target: {fileID: 4751264260949543554, guid: 53a95f35c3ac6a441a54d4569b577b27, type: 3}
       propertyPath: Interacted.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
