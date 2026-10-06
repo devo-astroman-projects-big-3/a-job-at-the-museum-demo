@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c6c9cce69a82f2346ab84732abcaab63, type: 3}
-  m_Name: NewPairConnectMinigameData 2
+  m_Name: 01_minigame
   m_EditorClassIdentifier: Assembly-CSharp::PairConnectMinigameData
-  _id: Third
+  _id: First
   _pairData:
-  - {fileID: 11400000, guid: a89316a1f02ce2a4d9c274d9a466b50e, type: 2}
-  - {fileID: 11400000, guid: f960024182b405340a122f40b6f153f7, type: 2}
-  - {fileID: 11400000, guid: 43776773ebb14f94aae7078a606fa645, type: 2}
-  - {fileID: 11400000, guid: f3f6a3b4f6fe7354d87609f5870a156f, type: 2}
+  - {fileID: 11400000, guid: 92e26844cf6bbaa4fa85fec214410404, type: 2}
+  - {fileID: 11400000, guid: 92aea61d7735f57408846b50ad6ef726, type: 2}
+  - {fileID: 11400000, guid: e688299b75b22174c9f2cf835a183d51, type: 2}
+  - {fileID: 11400000, guid: 7eaa9b73033af8a4da61d88e3b461b33, type: 2}
