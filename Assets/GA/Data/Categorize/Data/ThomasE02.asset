@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dab0edf1366a3a4fb068c1ad5b6f294, type: 3}
+  m_Name: ThomasE02
+  m_EditorClassIdentifier: Assembly-CSharp::CategoryData
+  _id: 03Brasil
+  _categoryName: Thomas E. Inventions
+  _images:
+  - {fileID: -74177399, guid: 7cb21388738802044a4fbec3a2a2d56b, type: 3}
+  - {fileID: 103585505, guid: 7cb21388738802044a4fbec3a2a2d56b, type: 3}
+  - {fileID: 1599945491, guid: 7cb21388738802044a4fbec3a2a2d56b, type: 3}
+  - {fileID: -1203886537, guid: 7cb21388738802044a4fbec3a2a2d56b, type: 3}
+  - {fileID: 1008533570, guid: 7cb21388738802044a4fbec3a2a2d56b, type: 3}
+  - {fileID: -730620554, guid: 7cb21388738802044a4fbec3a2a2d56b, type: 3}
+  - {fileID: -1044918023, guid: 7cb21388738802044a4fbec3a2a2d56b, type: 3}
+  - {fileID: -1704466820, guid: 7cb21388738802044a4fbec3a2a2d56b, type: 3}
+  - {fileID: -2039343860, guid: 482e7bb2b98e3974a889385af960fe7d, type: 3}
+  - {fileID: -1084797439, guid: 482e7bb2b98e3974a889385af960fe7d, type: 3}

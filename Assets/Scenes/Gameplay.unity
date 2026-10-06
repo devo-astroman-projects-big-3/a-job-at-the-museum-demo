@@ -3666,7 +3666,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Click one flag and then the correct name
+  m_text: Click one item and then its correct name
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -10540,7 +10540,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4751264260949543554, guid: 53a95f35c3ac6a441a54d4569b577b27, type: 3}
       propertyPath: Interacted.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: ArgBra
+      value: TeslaThomas01
       objectReference: {fileID: 0}
     - target: {fileID: 4751264260949543554, guid: 53a95f35c3ac6a441a54d4569b577b27, type: 3}
       propertyPath: Interacted.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -35201,7 +35201,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Connect each flag with the country
+  m_text: Connect each corresponding pair
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -38336,7 +38336,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4751264260949543554, guid: 53a95f35c3ac6a441a54d4569b577b27, type: 3}
       propertyPath: Interacted.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: BraCol
+      value: TeslaThomas02
       objectReference: {fileID: 0}
     - target: {fileID: 4751264260949543554, guid: 53a95f35c3ac6a441a54d4569b577b27, type: 3}
       propertyPath: Interacted.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
