@@ -19794,6 +19794,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneChanger
   _gameplay: Gamplay
   _outro: Outro
+  _intro: 
 --- !u!1 &1026892153
 GameObject:
   m_ObjectHideFlags: 0
@@ -41274,6 +41275,10 @@ PrefabInstance:
     - target: {fileID: 3024233225492941894, guid: 53a95f35c3ac6a441a54d4569b577b27, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -48.879997
+      objectReference: {fileID: 0}
+    - target: {fileID: 3080859302792764689, guid: 53a95f35c3ac6a441a54d4569b577b27, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3312479770089072828, guid: 53a95f35c3ac6a441a54d4569b577b27, type: 3}
       propertyPath: m_AnchorMax.y

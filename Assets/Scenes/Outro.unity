@@ -2574,6 +2574,7 @@ MonoBehaviour:
   _gameplay: Gameplay
   _outro: Outro
   _intro: Intro
+  _menu: Menu
 --- !u!1 &972517074
 GameObject:
   m_ObjectHideFlags: 0
@@ -2929,7 +2930,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 876824756}
         m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
-        m_MethodName: GoIntro
+        m_MethodName: GoMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
