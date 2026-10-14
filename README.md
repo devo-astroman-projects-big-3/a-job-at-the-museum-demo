@@ -12,6 +12,9 @@ Created in Unity3d
 
 Yarn spinner for dialogues
 
+Download it at https://devoastroman.itch.io/a-job-at-the-museum
+
+
 
 <p align="center">
   <img width="485" src="https://github.com/user-attachments/assets/8099191c-71e7-46f7-aab2-e56ac9057212" />
